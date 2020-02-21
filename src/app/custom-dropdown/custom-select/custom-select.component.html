@@ -1,6 +1,7 @@
-<div class="input-wrapper">
-    <div class="input" [class.required]="required" #dropreference>
-      <label class="label-text">{{label}}</label>
+<div class="custom-input-wrapper">
+  <div class="input" [class.required]="required" #dropreference>
+    <label class="label-text">{{label}}</label>
+    <div class="custom-container-input">
       <input #input
               placeholder={{placeholder}}
               [disabled]="disabled"
@@ -10,11 +11,15 @@
               (keydown)="onKeyDown($event)"
               (blur)="onTouched()"
               autocomplete="off">
-      <span class="dropdown-arrow" (click)="onDropMenuIconClick($event)">🔽</span>
-      <custom-dropdown [reference]="dropreference" #dropdownComp>
-        <div class="dropdown-options-container">
-          <ng-content select="custom-select-option"></ng-content>
-        </div>
-      </custom-dropdown>
     </div>
+    <div class="custom-container-icon">
+      <!--span class="dropdown-arrow" (click)="onDropMenuIconClick($event)">🔽</span-->
+      <div class="dropdown-arrow" (click)="onDropMenuIconClick($event)"></div>
+    </div>
+    <custom-dropdown [reference]="dropreference" #dropdownComp>
+      <div class="dropdown-options-container">
+        <ng-content select="custom-select-option"></ng-content>
+      </div>
+    </custom-dropdown>
   </div>
+</div>

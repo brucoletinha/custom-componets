@@ -1,31 +1,54 @@
-.input-wrapper {
+@import "src/app/shared/theme_variables.scss";
+
+.custom-input-wrapper {
     position: relative;
-    min-width: 5.625rem;
-    padding: .5rem 0 1.5rem;
-   
+      
     .input {
       position: relative;
+      flex-direction: row;
+      align-items: center;
+      display: flex;
       margin: 0;
       outline: 0;
+      border-radius: 4px;
+      min-height: 24px;
+      padding: 4%;
+      border: solid 1px rgba(0, 0, 0, 0.24);
+
+      .custom-container-input {
+        border-radius: 4px;
+        min-height: 24px;
+      }
+
+      .dropdown-arrow {
+        width: 0; 
+        height: 0; 
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid #000000;
+        display: inline-flex;
+        border-radius: 4px;
+      }
    
       input {
+        height: 100%;
         width: 100%;
         height: 1.5rem;
         line-height: 1.3125rem;
-        border: none;
         border-bottom: 1px solid #a8a8a8;
         text-overflow: ellipsis;
         white-space: normal;
         overflow: hidden;
         color: #323232;
-        margin-top: 4px;
-        padding-bottom: 2px;
         outline: 0;
         cursor: pointer;
         font-size: inherit;
+        border-radius: 4px;
+        min-height: 24px;
+        border: none;
    
         &:focus {
-          border-bottom: 2px solid #0079cc;
+          border-bottom: none;
         }
    
         &:disabled {
@@ -40,10 +63,10 @@
       }
    
       .dropdown-arrow {
-        position: absolute;
+       /* position: absolute;
         color: inherit;
         right: 0;
-        bottom: 0;
+        bottom: 0;*/
         cursor: pointer;
       }
    

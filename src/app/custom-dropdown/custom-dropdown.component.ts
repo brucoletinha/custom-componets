@@ -65,7 +65,9 @@ export class CustomDropdownComponent implements OnInit {
         originY: 'top',
         overlayX: 'start',
         overlayY: 'bottom'
-      }]);
+      }])
+    .withDefaultOffsetY(-(this.reference.offsetHeight))
+    .withDefaultOffsetX(this.reference.offsetLeft);
  
     return new OverlayConfig({
       positionStrategy: positionStrategy,
@@ -73,5 +75,4 @@ export class CustomDropdownComponent implements OnInit {
       backdropClass: 'cdk-overlay-transparent-backdrop'
     });
   }
-
 }
