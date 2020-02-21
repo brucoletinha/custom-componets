@@ -1,14 +1,22 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, ContentChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, ContentChildren, QueryList, AfterViewInit, forwardRef } from '@angular/core';
 import { CustomDropdownComponent } from '../custom-dropdown.component';
 import { CustomSelectOptionComponent } from '../custom-select-option/custom-select-option.component';
 import { CustomDropdownService } from '../custom-dropdown.service';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'custom-select',
   templateUrl: './custom-select.component.html',
   styleUrls: ['./custom-select.component.scss'],
-  providers: [CustomDropdownService]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CustomSelectComponent),
+      multi: true
+    },
+    CustomDropdownService
+  ]
 })
 export class CustomSelectComponent implements OnInit, AfterViewInit {
 
@@ -85,6 +93,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
     this.displayText = this.selectedOption ? this.selectedOption.value : '';
     this.hideDropdown();
     this.input.nativeElement.focus();
+    this.onChange();
   }
    
   public hideDropdown() {
@@ -108,6 +117,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
       this.selectedOption = this.keyManager.activeItem;
       this.displayText = this.selectedOption ? this.selectedOption.value : '';
       this.hideDropdown();
+      this.onChange();
     } else if (event.key === 'Escape' || event.key === 'Esc') {
       this.dropdown.showing && this.hideDropdown();
     } else if (['ArrowUp', 'Up', 'ArrowDown', 'Down', 'ArrowRight', 'Right', 'ArrowLeft', 'Left']
@@ -116,5 +126,33 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
     } else if (event.key === 'PageUp' || event.key === 'PageDown' || event.key === 'Tab') {
       this.dropdown.showing && event.preventDefault();
     }
+   }
+
+   public onChangeFn = (_: any) => {};
+ 
+   public onTouchedFn = () => {};
+  
+   public registerOnChange(fn: any): void {
+     this.onChangeFn = fn;
+   }
+  
+   public registerOnTouched(fn: any): void {
+     this.onTouchedFn = fn;
+   }
+  
+   public setDisabledState(isDisabled: boolean): void {
+     this.disabled = isDisabled;
+   }
+  
+   public writeValue(obj: any): void {
+     this.selected = obj;
+   }
+  
+   public onTouched() {
+     this.onTouchedFn();
+   }
+  
+   public onChange() {
+     this.onChangeFn(this.selected);
    }
 }

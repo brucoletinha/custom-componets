@@ -8,6 +8,7 @@
               [value]="displayText"
               (click)="showDropdown()"
               (keydown)="onKeyDown($event)"
+              (blur)="onTouched()"
               autocomplete="off">
       <span class="dropdown-arrow" (click)="onDropMenuIconClick($event)">🔽</span>
       <custom-dropdown [reference]="dropreference" #dropdownComp>
