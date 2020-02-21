@@ -2,6 +2,7 @@
 
 .custom-input-wrapper {
     position: relative;
+    font-family: $default-font-family;
       
     .input {
       position: relative;
@@ -10,15 +11,11 @@
       display: flex;
       margin: 0;
       outline: 0;
-      border-radius: 4px;
-      min-height: 24px;
+      border-radius: 8px;
+      //min-height: 24px;
       padding: 4%;
       border: solid 1px rgba(0, 0, 0, 0.24);
-
-      .custom-container-input {
-        border-radius: 4px;
-        min-height: 24px;
-      }
+      font-family: $default-font-family;
 
       .dropdown-arrow {
         width: 0; 
@@ -28,6 +25,7 @@
         border-top: 8px solid #000000;
         display: inline-flex;
         border-radius: 4px;
+        cursor: pointer;
       }
    
       input {
@@ -35,17 +33,19 @@
         width: 100%;
         height: 1.5rem;
         line-height: 1.3125rem;
-        border-bottom: 1px solid #a8a8a8;
+        //border-bottom: 1px solid #a8a8a8;
         text-overflow: ellipsis;
         white-space: normal;
         overflow: hidden;
-        color: #323232;
+        color: $secondary-color-400;
         outline: 0;
         cursor: pointer;
         font-size: inherit;
-        border-radius: 4px;
-        min-height: 24px;
+        //border-radius: 4px;
+        //min-height: 24px;
         border: none;
+        font-family: $default-font-family;
+        font-weight: 600;
    
         &:focus {
           border-bottom: none;
@@ -60,15 +60,7 @@
         &:disabled + .dropdown-arrow {
           color: #93a1aa;
         }
-      }
-   
-      .dropdown-arrow {
-       /* position: absolute;
-        color: inherit;
-        right: 0;
-        bottom: 0;*/
-        cursor: pointer;
-      }
+      }  
    
       &.required label:after {
         color: red;
@@ -82,8 +74,43 @@
    
   .dropdown-options-container {
     width: 100%;
-    border-radius: 3px;
+    border-radius: 8px;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.24);
     display: block;
     overflow: auto;
   }
+
+  /* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 0px 8px 0px 8px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 0px 8px 8px 0px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+::placeholder {
+  color: $secondary-color-300;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: $secondary-color-300;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: $secondary-color-300;
+}

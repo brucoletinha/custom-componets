@@ -1,36 +1,40 @@
+@import "src/app/shared/theme_variables.scss";
+
 :host {
     display: block;
     padding: 0 0.875rem;
     height: 2.5rem;
     line-height: 2.5rem;
-    color: #333;
+    color: $secondary-color-400;
     background-color: #fff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     user-select: none;
     cursor: pointer;
+    font-family: $default-font-family;
+    font-weight: 600;
+    font-size: 14px;
    
     &.selected {
-      color: #0079cc;
-      background-color: #eee;
-      font-weight: bold;
+      background-color: #f7f7f7;
+      font-weight: 600;
    
       &:hover, &.active {
-        background-color: #eee;
+        background-color: #f7f7f7;
    
         @media screen and (-ms-high-contrast: active) {
-          background-color: #eee;
+          background-color: #f7f7f7;
         }
       }
     }
    
     &:hover, &.active {
       outline: none;
-      background-color: #eee;
+      background-color: #f7f7f7;
    
       @media screen and (-ms-high-contrast: active) {
-        background-color: #eee;
+        background-color: #f7f7f7;
       }
     }
    
