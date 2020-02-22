@@ -57,6 +57,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.filteredOptions = [];
+    this.dropdownService.register(this);
   }
 
   public selectedOption: CustomSelectOptionComponent;

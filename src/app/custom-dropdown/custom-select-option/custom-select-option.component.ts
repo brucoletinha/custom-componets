@@ -12,6 +12,7 @@ export class CustomSelectOptionComponent implements OnInit, Highlightable {
 
   constructor(private dropdownService: CustomDropdownService) {
     this.select = this.dropdownService.getSelect();
+    this.multiple = this.dropdownService.getMultiple();
   }
 
   ngOnInit(): void {
@@ -23,6 +24,8 @@ export class CustomSelectOptionComponent implements OnInit, Highlightable {
   public value: string;
 
   checked = false;
+
+  multiple: boolean;
 
   @HostBinding('class.selected')
   public get selected(): boolean {
@@ -52,10 +55,5 @@ export class CustomSelectOptionComponent implements OnInit, Highlightable {
  
   public setInactiveStyles(): void {
     this.active = false;
-  }
-
-  public toggle(e) {
-    console.log(this.checked);
-    console.log(e.key, e.value);
   }
 }
