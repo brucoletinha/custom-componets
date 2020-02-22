@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, ContentChildren, QueryList, AfterViewInit, forwardRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, ContentChildren, QueryList, AfterViewInit, forwardRef, HostListener } from '@angular/core';
 import { CustomDropdownComponent } from '../custom-dropdown.component';
 import { CustomSelectOptionComponent } from '../custom-select-option/custom-select-option.component';
 import { CustomDropdownService } from '../custom-dropdown.service';
@@ -27,13 +27,16 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   public placeholder: string;
  
   @Input()
-  public selected: string;
+  public selected: any;
  
   @Input()
   public required = false;
  
   @Input()
   public disabled = false;
+
+  @Input()
+  public multiple = false;
 
   @ViewChild('input')
   public input: ElementRef;
@@ -46,11 +49,14 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   
   private keyManager: ActiveDescendantKeyManager<CustomSelectOptionComponent>
 
+  private filteredOptions: any[];
+
   constructor(private dropdownService: CustomDropdownService) {
     this.dropdownService.register(this);
   }
 
   ngOnInit(): void {
+    this.filteredOptions = [];
   }
 
   public selectedOption: CustomSelectOptionComponent;
@@ -75,7 +81,8 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
       return;
     }
     
-    this.selected ? this.keyManager.setActiveItem(this.selectedOption) : this.keyManager.setFirstItemActive();
+    if (this.multiple)
+      this.selected ? this.keyManager.setActiveItem(this.selectedOption) : this.keyManager.setFirstItemActive();
    }
   
   public onDropMenuIconClick(event: UIEvent) {
@@ -86,15 +93,53 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
     }, 10);
   }
 
-  public selectOption(option: CustomSelectOptionComponent) {
+  public selectOption(option: CustomSelectOptionComponent) {     
     this.keyManager.setActiveItem(option);
+    option.checked = !option.checked;
     this.selected = option.key;
     this.selectedOption = option;
-    this.displayText = this.selectedOption ? this.selectedOption.value : '';
-    this.hideDropdown();
+    
+    if (this.multiple) {
+      this.selectOptionMultiple();
+    } else {
+      this.displayText = this.selectedOption ? this.selectedOption.value : '';
+      this.hideDropdown();
+    }
     this.input.nativeElement.focus();
     this.onChange();
   }
+
+  private selectOptionMultiple() {
+    if (!this.filteredOptions.length) {
+      this.filteredOptions.push(this.selectedOption);
+    } else {
+      const selected = this.filteredOptions.find(item => item == this.selectedOption);
+      if (selected) {
+        const index = this.filteredOptions.indexOf(selected);
+        this.filteredOptions.splice(index, 1);
+      } else {
+        this.filteredOptions.push(this.selectedOption);
+      }
+    }
+
+    this.displaySting(this.filteredOptions);
+    this.selected = this.filteredOptions.map(item => item.key);
+  }
+
+  displaySting(seletedOptions: any) {
+    this.displayText = '';
+    let start = 0;
+    seletedOptions.forEach(element => {      
+      console.log(element); 
+        if(start)
+          this.displayText += ", ";
+        this.displayText += element.value;
+        start++;
+    });
+
+  }
+
+
    
   public hideDropdown() {
     this.dropdown.hide();

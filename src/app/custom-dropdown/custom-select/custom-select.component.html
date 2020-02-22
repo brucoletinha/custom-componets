@@ -10,13 +10,14 @@
               (click)="showDropdown()"
               (keydown)="onKeyDown($event)"
               (blur)="onTouched()"
-              autocomplete="off">
+              autocomplete="off"
+              multiple>
     </div>
     <div class="custom-container-icon">
       <div class="dropdown-arrow" (click)="onDropMenuIconClick($event)"></div>
     </div>
     <custom-dropdown [reference]="dropreference" #dropdownComp>
-      <div class="dropdown-options-container">
+      <div class="dropdown-options-container">        
         <ng-content select="custom-select-option"></ng-content>
       </div>
     </custom-dropdown>

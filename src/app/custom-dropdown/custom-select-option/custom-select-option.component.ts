@@ -5,7 +5,7 @@ import { Highlightable } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'custom-select-option',
-  template: '{{value}}',
+  templateUrl: './custom-select-option.component.html',
   styleUrls: ['./custom-select-option.component.scss']
 })
 export class CustomSelectOptionComponent implements OnInit, Highlightable {
@@ -21,10 +21,12 @@ export class CustomSelectOptionComponent implements OnInit, Highlightable {
  
   @Input()
   public value: string;
-  
+
+  checked = false;
+
   @HostBinding('class.selected')
   public get selected(): boolean {
-  return this.select.selectedOption === this;
+    return this.select.selectedOption === this;
   }
   
   private select: CustomSelectComponent;
@@ -50,5 +52,10 @@ export class CustomSelectOptionComponent implements OnInit, Highlightable {
  
   public setInactiveStyles(): void {
     this.active = false;
+  }
+
+  public toggle(e) {
+    console.log(this.checked);
+    console.log(e.key, e.value);
   }
 }
