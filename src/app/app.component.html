@@ -28,14 +28,40 @@ Você escolheu: {{selectedDestination}}
   </div>
 </form>
 
+<form  [formGroup]="profileForm">
+  <custom-select 
+      placeholder="Pick Your Holiday Destination"
+      formControlName="id">
+    <custom-select-option key="{{item.id}}" *ngFor="let item of data2;" [value]="item.name" ></custom-select-option>
+  </custom-select>
+  <div>
+    Você escolheu: {{profileForm.get('id').value}}
+  </div>
+</form>
+
+<form  [formGroup]="profileForm2" >
+  <div formGroupName="item">
+    <custom-select 
+        placeholder="Pick Your Holiday Destination"
+        formControlName="id">
+      <custom-select-option [key]="item" (click)="showContent()" *ngFor="let item of data2;" [value]="item.name" ></custom-select-option>
+    </custom-select>
+  </div>
+</form>
+
 
 <!--
 <custom-select [required]="true"
                label="Destination"
                placeholder="Pick Your Holiday Destination"
-               [(ngModel)]="selectedDestination"
+               [(ngModel)]="selectedDestination4"
                #model="ngModel">
-  <custom-select-option *ngFor="let item of data" [value]="item"></custom-select-option>
+  <custom-select-option [key]="item" *ngFor="let item of data" [value]="item"></custom-select-option>
 </custom-select>
-
+<div *ngIf="model.invalid && (model.dirty || model.touched)" style="color: red">
+  <div *ngIf="model.errors.required">
+    Destintation is required.
+  </div>
+</div>
 -->
+
