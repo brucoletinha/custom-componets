@@ -2,15 +2,32 @@
                placeholder="Pick Your Holiday Destination"
                [(ngModel)]="selectedDestination"
                #model="ngModel">
-  <custom-select-option key="index" *ngFor="let item of data; let i = index;" [value]="item"></custom-select-option>
+  <custom-select-option key="{{item}}" *ngFor="let item of data;" [value]="item"></custom-select-option>
 </custom-select>
-
+<div>
+Você escolheu: {{selectedDestination}}
+</div>
 <custom-select 
                placeholder="Pick Your Holiday Destination"
-               [(ngModel)]="selectedDestination"
+               [(ngModel)]="selectedDestination2"
                #model="ngModel">
-  <custom-select-option key="index" *ngFor="let item of data; let i = index;" [value]="item"></custom-select-option>
+  <custom-select-option key="{{item.id}}" *ngFor="let item of data2;" [value]="item.name"></custom-select-option>
 </custom-select>
+<div>
+  Você escolheu: {{selectedDestination2}}
+</div>
+
+<form>
+  <custom-select 
+      placeholder="Pick Your Holiday Destination"
+      [formControl]="selectedDestination3">
+    <custom-select-option key="{{item.id}}" *ngFor="let item of data2;" [value]="item.name" ></custom-select-option>
+  </custom-select>
+  <div>
+    Você escolheu: {{selectedDestination3.value}}
+  </div>
+</form>
+
 
 <!--
 <custom-select [required]="true"
