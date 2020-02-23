@@ -160,10 +160,15 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
     console.log(this.selected, this._selectionModel, this._selectionModel.selected)
   }
 
-  displaySting(seletedOptions: any) {
+  displaySting(filteredOptions: any) {
+    const checkAll = filteredOptions.find(item => item.checkAll == true);
     this.displayText = '';
-    const valueOptions = seletedOptions.map(item => item.value);
-    this.displayText = valueOptions.join(', ');
+    if (checkAll) {
+      this.displayText = checkAll.value;
+    } else {
+      const valueOptions = filteredOptions.filter(item => !item.checkAll).map(item => item.value);
+      this.displayText = valueOptions.join(', ');
+    }
   }
    
   public hideDropdown() {
