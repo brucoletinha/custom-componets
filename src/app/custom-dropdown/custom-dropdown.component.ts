@@ -60,12 +60,12 @@ export class CustomDropdownComponent implements OnInit {
         originY: 'bottom',
         overlayX: 'start',
         overlayY: 'top'
-      }, {
+      }/*, {
         originX: 'start',
         originY: 'top',
         overlayX: 'start',
         overlayY: 'bottom'
-      }])
+      }*/])
     .withDefaultOffsetY(-(this.reference.offsetHeight))
     .withDefaultOffsetX(this.reference.offsetLeft);
  

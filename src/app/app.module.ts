@@ -1,7 +1,7 @@
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { OverlayModule } from '@angular/cdk/overlay';
+import { OverlayModule, OverlayContainer } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 
 import { AppComponent } from './app.component';
