@@ -150,7 +150,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
         this.selectedOption.onSelect();
         this.filteredOptions.push(this.selectedOption);
         checkAll = _options.find(item => item.checkAll == true);
-        if (this.filteredOptions.length == (_options.length - 1)) {
+        if (checkAll && this.filteredOptions.length == (_options.length - 1)) {
           this.filteredOptions.push(checkAll);
           this._selectionModel.select(checkAll.key);        
         }
