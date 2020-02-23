@@ -49,7 +49,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   @ContentChildren(CustomSelectOptionComponent)
   public options: QueryList<CustomSelectOptionComponent>
 
-  private _selectionModel: SelectionModel<CustomSelectOptionComponent>;
+  public _selectionModel: SelectionModel<CustomSelectOptionComponent>;
   
   private keyManager: ActiveDescendantKeyManager<CustomSelectOptionComponent>
 
@@ -62,6 +62,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.filteredOptions = [];
     this.dropdownService.register(this);
+    this._selectionModel = new SelectionModel(this.dropdownService.getMultiple(), []);
   }
 
   public selectedOption: CustomSelectOptionComponent;
@@ -101,6 +102,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   public selectOption(option: CustomSelectOptionComponent) {     
     this.keyManager.setActiveItem(option);
     this.selected = option.key;
+    this._selectionModel = new SelectionModel(this.dropdownService.getMultiple(), this.selected);
     this.selectedOption = option;
     option.onSelect();
     
@@ -131,22 +133,15 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
     this.displaySting(this.filteredOptions);
     this.selected = this.filteredOptions.map(item => item.key);
     console.log("selected: ", this.selected, " options: ", this.options)
+    this.selected.forEach(row => this._selectionModel.select(row));
+    console.log("_selectionModel: ", this._selectionModel, this._selectionModel.selected.values);
   }
 
   displaySting(seletedOptions: any) {
     this.displayText = '';
-    let start = 0;
-    seletedOptions.forEach(element => {      
-      console.log(element); 
-        if(start)
-          this.displayText += ", ";
-        this.displayText += element.value;
-        start++;
-    });
-
+    const valueOptions = seletedOptions.map(item => item.value);
+    this.displayText = valueOptions.join(', ');
   }
-
-
    
   public hideDropdown() {
     this.dropdown.hide();

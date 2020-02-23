@@ -1,4 +1,8 @@
 <div> 
-    <mat-checkbox *ngIf="multiple" [(ngModel)]="checked">{{value}}</mat-checkbox>
+    <!--mat-checkbox *ngIf="multiple" [(ngModel)]="checked">{{value}}</mat-checkbox-->
+    <mat-checkbox *ngIf="multiple" 
+        (change)="$event ? toggle(key) : null"
+        [checked]="isSelected(key)">{{value}}
+    </mat-checkbox>
     <span *ngIf="!multiple">{{value}}</span>
 </div>
