@@ -24,7 +24,8 @@ export class CustomSelectOptionComponent implements OnInit, Highlightable {
  
   @Input()
   public value: string;
-
+  
+  @Input()
   checked = false;
 
   multiple: boolean;

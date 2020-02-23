@@ -102,7 +102,8 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   public selectOption(option: CustomSelectOptionComponent) {     
     this.keyManager.setActiveItem(option);
     this.selected = option.key;
-    this._selectionModel = new SelectionModel(this.dropdownService.getMultiple(), this.selected);
+    const x = this.multiple ? this.selected : [this.selected]
+    this._selectionModel = new SelectionModel(this.dropdownService.getMultiple(), x);
     this.selectedOption = option;
     option.onSelect();
     
@@ -132,9 +133,8 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
 
     this.displaySting(this.filteredOptions);
     this.selected = this.filteredOptions.map(item => item.key);
-    console.log("selected: ", this.selected, " options: ", this.options)
     this.selected.forEach(row => this._selectionModel.select(row));
-    console.log("_selectionModel: ", this._selectionModel, this._selectionModel.selected.values);
+    this.selected = this._selectionModel.selected;
   }
 
   displaySting(seletedOptions: any) {

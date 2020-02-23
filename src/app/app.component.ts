@@ -50,6 +50,8 @@ export class AppComponent implements OnInit {
   }
 
   selectAll() {
+    console.log("selectAll: ", this.profileForm3.get('item').value)
+    /*
     if (!this.checkAll) {
       this.checkAll = true;
       this.profileForm3.get("item").setValue(null);
@@ -58,7 +60,7 @@ export class AppComponent implements OnInit {
       this.checkAll = false;
       this.profileForm3.get("item").setValue(null);
     }
-    console.log("formControl: ", this.profileForm3.get("item").value);
+    console.log("formControl: ", this.profileForm3.get("item").value);*/
   }
 
   selectOne(values: any) {
