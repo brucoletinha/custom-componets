@@ -9,6 +9,7 @@ export class CustomDropdownService {
   constructor() { }
   private select: CustomSelectComponent;
   private multiple: boolean;
+  private checkAll: boolean;
  
   public register(select: CustomSelectComponent) {
     this.select = select;
@@ -21,5 +22,13 @@ export class CustomDropdownService {
 
   public getMultiple(): boolean {
     return this.multiple;
+  }
+
+  public getCheckAll() {
+    return this.checkAll;
+  }
+
+  public setCheckAll(checkAll: boolean) {
+    this.checkAll = checkAll;
   }
 }

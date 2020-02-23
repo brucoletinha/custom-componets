@@ -17,16 +17,20 @@ export class CustomSelectOptionComponent implements OnInit, Highlightable {
 
   ngOnInit(): void {
     this.multiple = this.dropdownService.getMultiple();
+    this.dropdownService.setCheckAll(this.checkAll);
   }
   
   @Input()
-  public key: string;
+  public key: any;
  
   @Input()
-  public value: string;
+  public value: any;
   
   @Input()
   checked = false;
+
+  @Input()
+  public checkAll = false;
 
   multiple: boolean;
 

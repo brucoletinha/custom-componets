@@ -4,7 +4,6 @@ import { CustomSelectOptionComponent } from '../custom-select-option/custom-sele
 import { CustomDropdownService } from '../custom-dropdown.service';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatOption } from '@angular/material/core';
 import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
@@ -102,13 +101,10 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   public selectOption(option: CustomSelectOptionComponent) {     
     this.keyManager.setActiveItem(option);
     this.selected = option.key;
-    const x = this.multiple ? this.selected : [this.selected]
-    this._selectionModel = new SelectionModel(this.dropdownService.getMultiple(), x);
     this.selectedOption = option;
-    option.onSelect();
     
     if (this.multiple) {
-      this.selectOptionMultiple();
+      this.selectOptionMultiple(option);
     } else {
       this.displayText = this.selectedOption ? this.selectedOption.value : '';
       this.hideDropdown();
@@ -117,24 +113,46 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
     this.onChange();
   }
 
-  private selectOptionMultiple() {
-    if (!this.filteredOptions.length) {
-      this.filteredOptions.push(this.selectedOption);
+  private selectOptionMultiple(option: CustomSelectOptionComponent) {
+
+    const _options = this.options.toArray();
+    if (option.checkAll) {//marcar todos
+      if (this._selectionModel.selected.length == _options.length) {
+        this.filteredOptions = [];
+        this._selectionModel.clear();        
+      } else {
+        this.filteredOptions = _options.map(item => {
+          item.onSelect();  
+          return item;
+        });
+      }
     } else {
-      const selected = this.filteredOptions.find(item => item == this.selectedOption);
-      if (selected) {
-        this.selectedOption.onDeselect();
-        const index = this.filteredOptions.indexOf(selected);
+      const checkAll = this.filteredOptions.find(item => item.checkAll == true);
+      if (checkAll) {
+        const index = this.filteredOptions.indexOf(checkAll);
         this.filteredOptions.splice(index, 1);
+        this._selectionModel.deselect(checkAll.key);
+      }
+      
+      if (this.selectedOption.checked) {
+        this.selectedOption.onDeselect();
+        const selected = this.filteredOptions.find(item => item == this.selectedOption);
+        if (selected) {
+          const index = this.filteredOptions.indexOf(selected);
+          this.filteredOptions.splice(index, 1);
+          this._selectionModel.deselect(selected.key);
+        }
       } else {
         this.filteredOptions.push(this.selectedOption);
       }
-    }
 
+    }
+    
     this.displaySting(this.filteredOptions);
     this.selected = this.filteredOptions.map(item => item.key);
     this.selected.forEach(row => this._selectionModel.select(row));
-    this.selected = this._selectionModel.selected;
+    this.selected = this.filteredOptions;
+    console.log(this.selected, this._selectionModel, this._selectionModel.selected)
   }
 
   displaySting(seletedOptions: any) {
