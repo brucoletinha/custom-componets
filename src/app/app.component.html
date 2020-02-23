@@ -62,6 +62,17 @@ Você escolheu: {{selectedDestination}}
   </div>
 </form>
 
+<form  [formGroup]="profileForm3" >
+  <div>
+    <custom-select 
+        placeholder="Pick Your Holiday Destination"
+        formControlName="item"
+        [multiple]="true">
+      <custom-select-option [key]="item" (click)="showContent()" *ngFor="let item of data2; trackBy: trackByFn;" [value]="item.name" ></custom-select-option>
+    </custom-select>
+  </div>
+</form>
+
 
 <!--
 <custom-select [required]="true"

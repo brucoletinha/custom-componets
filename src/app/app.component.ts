@@ -26,6 +26,10 @@ export class AppComponent {
       name: null
     }),
   });
+
+  profileForm3 = this.fb.group({
+    item: new FormControl([null])
+  });
   
   title = 'angular-dropdown';
 
@@ -33,7 +37,11 @@ export class AppComponent {
   
   data2 = [{id: 1, name:"Paris"}, {id: 2, name:"Mauritius"}, {id: 3, name:"Singapore"},  {id: 4, name:"Malaysia"},  {id: 5, name:"Goa"},{id: 6, name:"Thailand"} ];
   showContent() {
-    //console.log(this.profileForm2.get("item").value);
+    console.log(this.profileForm3.get("item").value);
     console.log(this.selectedDestination5);
+  }
+  // Method in component class
+  trackByFn(index, item) {
+    return item.id;
   }
 }
