@@ -1,17 +1,5 @@
 <custom-select 
                placeholder="Pick Your Holiday Destination"
-               [(ngModel)]="selectedDestination5"
-               #model="ngModel"               
-               [multiple]="true">
-  <custom-select-option key="0" [value]="'Todos'"></custom-select-option>
-  <custom-select-option key="{{item}}" *ngFor="let item of data;" [value]="item"></custom-select-option>
-</custom-select>
-<div>
-Você escolheu: {{selectedDestination5}}
-</div>
-
-<custom-select 
-               placeholder="Pick Your Holiday Destination"
                [(ngModel)]="selectedDestination"
                #model="ngModel"               
                [multiple]="true">

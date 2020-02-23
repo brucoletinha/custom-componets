@@ -127,7 +127,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
         });
       }
     } else {
-      const checkAll = this.filteredOptions.find(item => item.checkAll == true);
+      let checkAll = this.filteredOptions.find(item => item.checkAll == true);
       if (checkAll) {
         const index = this.filteredOptions.indexOf(checkAll);
         this.filteredOptions.splice(index, 1);
@@ -143,9 +143,14 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
           this._selectionModel.deselect(selected.key);
         }
       } else {
+        this.selectedOption.onSelect();
         this.filteredOptions.push(this.selectedOption);
+        checkAll = _options.find(item => item.checkAll == true);
+        if (this.filteredOptions.length == (_options.length - 1)) {
+          this.filteredOptions.push(checkAll);
+          this._selectionModel.select(checkAll.key);        
+        }
       }
-
     }
     
     this.displaySting(this.filteredOptions);
