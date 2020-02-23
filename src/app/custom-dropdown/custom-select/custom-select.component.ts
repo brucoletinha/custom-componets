@@ -119,7 +119,11 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
     if (option.checkAll) {//marcar todos
       if (this._selectionModel.selected.length == _options.length) {
         this.filteredOptions = [];
-        this._selectionModel.clear();        
+        this._selectionModel.clear();  
+        _options.map(item => {
+          item.onDeselect();  
+          return item;
+        });      
       } else {
         this.filteredOptions = _options.map(item => {
           item.onSelect();  
