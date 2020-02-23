@@ -11,6 +11,7 @@ export class AppComponent {
   public selectedDestination2: string;
   selectedDestination3 = new FormControl('');
   public selectedDestination4: string;
+  public selectedDestination5: any;
 
   constructor(private fb: FormBuilder) { }
 
@@ -32,6 +33,7 @@ export class AppComponent {
   
   data2 = [{id: 1, name:"Paris"}, {id: 2, name:"Mauritius"}, {id: 3, name:"Singapore"},  {id: 4, name:"Malaysia"},  {id: 5, name:"Goa"},{id: 6, name:"Thailand"} ];
   showContent() {
-    console.log(this.profileForm2.get("item").value);
+    //console.log(this.profileForm2.get("item").value);
+    console.log(this.selectedDestination5);
   }
 }

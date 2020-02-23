@@ -1,4 +1,4 @@
-<div class="custom-input-wrapper">
+<div class="custom-input-wrapper" multiple>
   <div class="input" [class.required]="required" #dropreference>
     <label class="label-text">{{label}}</label>
     <div class="custom-container-input">
@@ -10,8 +10,7 @@
               (click)="showDropdown()"
               (keydown)="onKeyDown($event)"
               (blur)="onTouched()"
-              autocomplete="off"
-              multiple>
+              autocomplete="off">
     </div>
     <div class="custom-container-icon">
       <div class="dropdown-arrow" (click)="onDropMenuIconClick($event)"></div>

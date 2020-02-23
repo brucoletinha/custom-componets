@@ -20,7 +20,7 @@
       background-color: #f7f7f7;
       font-weight: 600;
    
-      &:hover, &.active {
+      &:hover/*, &.active*/ {
         background-color: #f7f7f7;
    
         @media screen and (-ms-high-contrast: active) {
@@ -29,7 +29,7 @@
       }
     }
    
-    &:hover, &.active {
+    &:hover/*, &.active*/ {
       outline: none;
       background-color: #f7f7f7;
    
@@ -51,8 +51,4 @@
         }
       }
     }
-  }
-
-  .checkbox {
-    background-color: red;
   }

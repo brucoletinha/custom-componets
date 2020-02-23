@@ -12,7 +12,6 @@
       margin: 0;
       outline: 0;
       border-radius: 8px;
-      //min-height: 24px;
       padding: 4%;
       border: solid 1px $secondary-color-300;
       font-family: $default-font-family;
@@ -33,7 +32,6 @@
         width: 100%;
         height: 1.5rem;
         line-height: 1.3125rem;
-        //border-bottom: 1px solid #a8a8a8;
         text-overflow: ellipsis;
         white-space: normal;
         overflow: hidden;
@@ -41,8 +39,6 @@
         outline: 0;
         cursor: pointer;
         font-size: inherit;
-        //border-radius: 4px;
-        //min-height: 24px;
         border: none;
         font-family: $default-font-family;
         font-weight: 600;

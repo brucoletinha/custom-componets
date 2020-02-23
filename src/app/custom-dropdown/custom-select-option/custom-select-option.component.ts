@@ -16,7 +16,9 @@ export class CustomSelectOptionComponent implements OnInit, Highlightable {
   }
 
   ngOnInit(): void {
+    this.multiple = this.dropdownService.getMultiple();
   }
+  
   @Input()
   public key: string;
  

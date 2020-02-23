@@ -82,7 +82,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
       return;
     }
     
-    if (this.multiple)
+    if (!this.multiple)
       this.selected ? this.keyManager.setActiveItem(this.selectedOption) : this.keyManager.setFirstItemActive();
    }
   
