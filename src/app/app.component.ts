@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,11 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  checkAll: boolean;
+  ngOnInit(): void {
+    this.checkAll = false;
+  }
   public selectedDestination: string;
   public selectedDestination2: string;
   selectedDestination3 = new FormControl('');
@@ -43,5 +47,28 @@ export class AppComponent {
   // Method in component class
   trackByFn(index, item) {
     return item.id;
+  }
+
+  selectAll() {
+    if (!this.checkAll) {
+      this.checkAll = true;
+      this.profileForm3.get("item").setValue(null);
+      this.profileForm3.get("item").setValue(this.data2);
+    } else {
+      this.checkAll = false;
+      this.profileForm3.get("item").setValue(null);
+    }
+    console.log("formControl: ", this.profileForm3.get("item").value);
+  }
+
+  selectOne(values: any) {
+    if (this.profileForm3.controls.item.value.length === this.data2.length) {
+      this.checkAll = false;
+      this.selectAll();
+    } else if (this.checkAll) {
+      this.checkAll = false;
+      this.profileForm3.get("item").setValue(null);
+      this.profileForm3.get("item").setValue(values);
+    }
   }
 }

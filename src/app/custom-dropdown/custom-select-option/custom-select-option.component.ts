@@ -58,4 +58,12 @@ export class CustomSelectOptionComponent implements OnInit, Highlightable {
   public setInactiveStyles(): void {
     this.active = false;
   }
+
+  public onSelect(): void {
+    this.checked = true;
+  }
+  
+  public onDeselect(): void {
+    this.checked = false;
+  }
 }

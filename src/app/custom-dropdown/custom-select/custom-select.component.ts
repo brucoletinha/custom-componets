@@ -4,6 +4,8 @@ import { CustomSelectOptionComponent } from '../custom-select-option/custom-sele
 import { CustomDropdownService } from '../custom-dropdown.service';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MatOption } from '@angular/material/core';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'custom-select',
@@ -46,6 +48,8 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   
   @ContentChildren(CustomSelectOptionComponent)
   public options: QueryList<CustomSelectOptionComponent>
+
+  private _selectionModel: SelectionModel<CustomSelectOptionComponent>;
   
   private keyManager: ActiveDescendantKeyManager<CustomSelectOptionComponent>
 
@@ -96,9 +100,9 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
 
   public selectOption(option: CustomSelectOptionComponent) {     
     this.keyManager.setActiveItem(option);
-    option.checked = !option.checked;
     this.selected = option.key;
     this.selectedOption = option;
+    option.onSelect();
     
     if (this.multiple) {
       this.selectOptionMultiple();
@@ -116,6 +120,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
     } else {
       const selected = this.filteredOptions.find(item => item == this.selectedOption);
       if (selected) {
+        this.selectedOption.onDeselect();
         const index = this.filteredOptions.indexOf(selected);
         this.filteredOptions.splice(index, 1);
       } else {
@@ -125,6 +130,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
 
     this.displaySting(this.filteredOptions);
     this.selected = this.filteredOptions.map(item => item.key);
+    console.log("selected: ", this.selected, " options: ", this.options)
   }
 
   displaySting(seletedOptions: any) {
