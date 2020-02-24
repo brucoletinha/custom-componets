@@ -141,7 +141,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
       }
     }    
     this.displaySting(this._selectionModel.selected);  
-    this.selected = this._selectionModel.selected.map(item => item.key);
+    this.selected = this._selectionModel.selected.filter(item => !item.checkAll).map(item => item.key);
   }
 
   displaySting(filteredOptions: CustomSelectOptionComponent[]) {
