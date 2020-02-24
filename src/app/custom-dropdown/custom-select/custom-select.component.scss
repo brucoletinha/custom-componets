@@ -71,6 +71,7 @@
   .dropdown-options-container {
     width: 100%;
     border-radius: 8px;
+    border: 1px solid #9E9E9E;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.24);
     display: block;
     overflow: auto;
@@ -84,7 +85,7 @@
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1; 
-  border-radius: 0px 8px 0px 8px;
+  border-radius: 0px 8px 8px 0px;
 }
  
 /* Handle */

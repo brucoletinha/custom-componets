@@ -1,67 +1,81 @@
-<custom-select 
-               placeholder="Pick Your Holiday Destination"
-               [(ngModel)]="selectedDestination"
-               #model="ngModel"               
-               [multiple]="true">
-  <custom-select-option key="{{item}}" *ngFor="let item of data;" [value]="item"></custom-select-option>
-</custom-select>
+<div class="container">
 <div>
-Você escolheu: {{selectedDestination}}
-</div>
-<custom-select 
-               placeholder="Pick Your Holiday Destination"
-               [(ngModel)]="selectedDestination2"
-               #model="ngModel">
-  <custom-select-option key="{{item.id}}" *ngFor="let item of data2;" [value]="item.name"></custom-select-option>
-</custom-select>
-<div>
-  Você escolheu: {{selectedDestination2}}
-</div>
-
-<form>
   <custom-select 
-      placeholder="Pick Your Holiday Destination"
-      [formControl]="selectedDestination3">
-    <custom-select-option key="{{item.id}}" *ngFor="let item of data2;" [value]="item.name" ></custom-select-option>
+                  placeholder="Pick Your Holiday Destination"
+                  [(ngModel)]="selectedDestination"
+                  #model="ngModel"               
+                  [multiple]="true">
+    <custom-select-option key="{{item}}" *ngFor="let item of data;" [value]="item"></custom-select-option>
   </custom-select>
   <div>
-    Você escolheu: {{selectedDestination3.value}}
+    Você escolheu: {{selectedDestination}}
   </div>
-</form>
+</div>
 
-<form  [formGroup]="profileForm">
+<div>
   <custom-select 
-      placeholder="Pick Your Holiday Destination"
-      formControlName="id">
-    <custom-select-option key="{{item.id}}" *ngFor="let item of data2;" [value]="item.name" ></custom-select-option>
+                placeholder="Pick Your Holiday Destination"
+                [(ngModel)]="selectedDestination2"
+                #model="ngModel">
+    <custom-select-option key="{{item.id}}" *ngFor="let item of data2;" [value]="item.name"></custom-select-option>
   </custom-select>
   <div>
-    Você escolheu: {{profileForm.get('id').value}}
+    Você escolheu: {{selectedDestination2}}
   </div>
-</form>
+</div>
 
-<form  [formGroup]="profileForm2" >
-  <div formGroupName="item">
+<div>
+  <form>
+    <custom-select 
+        placeholder="Pick Your Holiday Destination"
+        [formControl]="selectedDestination3">
+      <custom-select-option key="{{item.id}}" *ngFor="let item of data2;" [value]="item.name" ></custom-select-option>
+    </custom-select>
+    <div>
+      Você escolheu: {{selectedDestination3.value}}
+    </div>
+  </form>
+</div>
+
+<div>
+  <form  [formGroup]="profileForm">
     <custom-select 
         placeholder="Pick Your Holiday Destination"
         formControlName="id">
-      <custom-select-option [key]="item" (click)="showContent()" *ngFor="let item of data2;" [value]="item.name" ></custom-select-option>
+      <custom-select-option key="{{item.id}}" *ngFor="let item of data2;" [value]="item.name" ></custom-select-option>
     </custom-select>
-  </div>
-</form>
+    <div>
+      Você escolheu: {{profileForm.get('id').value}}
+    </div>
+  </form>
+</div>
 
-<form  [formGroup]="profileForm3" >
-  <div>
-    <custom-select 
-        placeholder="Pick Your Holiday Destination"
-        formControlName="item"
-        [multiple]="true">
-      <custom-select-option [checkAll]="true" [key]="0" [value]="'Todos'" (click)="selectAll()"></custom-select-option>
-      <custom-select-option [key]="item" (click)="selectOne(item)" *ngFor="let item of data2; trackBy: trackByFn;" [value]="item.name" ></custom-select-option>
-    </custom-select>
-  </div>
-</form>
+<div>
+  <form  [formGroup]="profileForm2" >
+    <div formGroupName="item">
+      <custom-select 
+          placeholder="Pick Your Holiday Destination"
+          formControlName="id">
+        <custom-select-option [key]="item" (click)="showContent()" *ngFor="let item of data2;" [value]="item.name" ></custom-select-option>
+      </custom-select>
+    </div>
+  </form>
+</div>
 
+<div>
+  <form  [formGroup]="profileForm3" >
+    <div>
+      <custom-select 
+          placeholder="Pick Your Holiday Destination"
+          formControlName="item"
+          [multiple]="true">
+        <custom-select-option [checkAll]="true" [key]="0" [value]="'Todos'" (click)="selectAll()"></custom-select-option>
+        <custom-select-option [key]="item" (click)="selectOne(item)" *ngFor="let item of data2; trackBy: trackByFn;" [value]="item.name" ></custom-select-option>
+      </custom-select>
+    </div>
+  </form>
+  </div>
+</div>
 
 <!--
 <custom-select [required]="true"
