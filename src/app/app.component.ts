@@ -64,6 +64,7 @@ export class AppComponent implements OnInit {
   }
 
   selectOne(values: any) {
+    console.log("selectOne: ", this.profileForm3.get('item').value)
     if (this.profileForm3.controls.item.value.length === this.data2.length) {
       this.checkAll = false;
       this.selectAll();

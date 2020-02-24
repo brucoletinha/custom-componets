@@ -116,40 +116,30 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   private selectOptionMultiple(option: CustomSelectOptionComponent) {
 
     const _options = this.options.toArray();
-    if (option.checkAll) {//marcar todos
+    if (option.checkAll) {
       if (this._selectionModel.selected.length == _options.length) {        
-        this._selectionModel.clear();  
-        _options.map(item => {
-          item.onDeselect();  
-          return item;
-        });      
+        this._selectionModel.clear();       
       } else {
         _options.forEach(item => {
-          item.onSelect();
           this._selectionModel.select(item);
         });
       }
     } else {
       let checkAll = this._selectionModel.selected.find(item => item.checkAll == true);
       if (checkAll) {
-        checkAll.onDeselect();
         this._selectionModel.deselect(checkAll);
       }
       
-      if (this.selectedOption.checked) {
-        this.selectedOption.onDeselect();
+      if (this._selectionModel.isSelected(this.selectedOption)) {
         this._selectionModel.deselect(this.selectedOption);
       } else {
-        this.selectedOption.onSelect();
         this._selectionModel.select(this.selectedOption);
         checkAll = _options.find(item => item.checkAll == true);
-        if (checkAll && this._selectionModel.selected.length == (_options.length - 1)) {
-          checkAll.onSelect();
+        if (checkAll && this._selectionModel.selected.length == (_options.length - 1)) {          
           this._selectionModel.select(checkAll);        
         }
       }
-    }
-    
+    }    
     this.displaySting(this._selectionModel.selected);  
     this.selected = this._selectionModel.selected.map(item => item.key);
   }
@@ -184,9 +174,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
     
     if (event.key === 'Enter' || event.key === ' ') {
       this.selectedOption = this.keyManager.activeItem;
-      this.displayText = this.selectedOption ? this.selectedOption.value : '';
-      this.hideDropdown();
-      this.onChange();
+      this.selectOption(this.selectedOption);
     } else if (event.key === 'Escape' || event.key === 'Esc') {
       this.dropdown.showing && this.hideDropdown();
     } else if (['ArrowUp', 'Up', 'ArrowDown', 'Down', 'ArrowRight', 'Right', 'ArrowLeft', 'Left']
