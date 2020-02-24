@@ -48,7 +48,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   @ContentChildren(CustomSelectOptionComponent)
   public options: QueryList<CustomSelectOptionComponent>
 
-  public _selectionModel: SelectionModel<CustomSelectOptionComponent>;
+  public _selectionModel: SelectionModel<any>;
   
   private keyManager: ActiveDescendantKeyManager<CustomSelectOptionComponent>
 
@@ -108,8 +108,8 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
     } else {
       this.displayText = this.selectedOption ? this.selectedOption.value : '';
       this.hideDropdown();
+      this.input.nativeElement.focus();
     }
-    this.input.nativeElement.focus();
     this.onChange();
   }
 
@@ -117,51 +117,41 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
 
     const _options = this.options.toArray();
     if (option.checkAll) {//marcar todos
-      if (this._selectionModel.selected.length == _options.length) {
-        this.filteredOptions = [];
+      if (this._selectionModel.selected.length == _options.length) {        
         this._selectionModel.clear();  
         _options.map(item => {
           item.onDeselect();  
           return item;
         });      
       } else {
-        this.filteredOptions = _options.map(item => {
-          item.onSelect();  
-          return item;
+        _options.forEach(item => {
+          item.onSelect();
+          this._selectionModel.select(item);
         });
       }
     } else {
-      let checkAll = this.filteredOptions.find(item => item.checkAll == true);
+      let checkAll = this._selectionModel.selected.find(item => item.checkAll == true);
       if (checkAll) {
-        const index = this.filteredOptions.indexOf(checkAll);
-        this.filteredOptions.splice(index, 1);
-        this._selectionModel.deselect(checkAll.key);
+        checkAll.onDeselect();
+        this._selectionModel.deselect(checkAll);
       }
       
       if (this.selectedOption.checked) {
         this.selectedOption.onDeselect();
-        const selected = this.filteredOptions.find(item => item == this.selectedOption);
-        if (selected) {
-          const index = this.filteredOptions.indexOf(selected);
-          this.filteredOptions.splice(index, 1);
-          this._selectionModel.deselect(selected.key);
-        }
+        this._selectionModel.deselect(this.selectedOption);
       } else {
         this.selectedOption.onSelect();
-        this.filteredOptions.push(this.selectedOption);
+        this._selectionModel.select(this.selectedOption);
         checkAll = _options.find(item => item.checkAll == true);
-        if (checkAll && this.filteredOptions.length == (_options.length - 1)) {
-          this.filteredOptions.push(checkAll);
-          this._selectionModel.select(checkAll.key);        
+        if (checkAll && this._selectionModel.selected.length == (_options.length - 1)) {
+          checkAll.onSelect();
+          this._selectionModel.select(checkAll);        
         }
       }
     }
     
-    this.displaySting(this.filteredOptions);
-    this.selected = this.filteredOptions.map(item => item.key);
-    this.selected.forEach(row => this._selectionModel.select(row));
-    this.selected = this.filteredOptions;
-    console.log(this.selected, this._selectionModel, this._selectionModel.selected)
+    this.displaySting(this._selectionModel.selected);  
+    this.selected = this._selectionModel.selected.map(item => item.key);
   }
 
   displaySting(filteredOptions: any) {
