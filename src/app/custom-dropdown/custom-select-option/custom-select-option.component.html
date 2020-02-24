@@ -1,7 +1,7 @@
 <div> 
     <mat-checkbox *ngIf="multiple" 
-        (change)="$event ? toggle(key) : null"
-        [checked]="isSelected(key)">{{value}}
+        (change)="$event ? toggle() : null"
+        [checked]="isSelected()">{{value}}
     </mat-checkbox>
     <span *ngIf="!multiple">{{value}}</span>
 </div>

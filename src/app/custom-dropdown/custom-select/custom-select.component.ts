@@ -39,16 +39,16 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   @Input()
   public multiple = false;
 
-  @ViewChild('input')
+  @ViewChild('input', { static: true })
   public input: ElementRef;
   
-  @ViewChild(CustomDropdownComponent)
+  @ViewChild(CustomDropdownComponent, { static: true })
   public dropdown: CustomDropdownComponent;
   
   @ContentChildren(CustomSelectOptionComponent)
   public options: QueryList<CustomSelectOptionComponent>
 
-  public _selectionModel: SelectionModel<any>;
+  public _selectionModel: SelectionModel<CustomSelectOptionComponent>;
   
   private keyManager: ActiveDescendantKeyManager<CustomSelectOptionComponent>
 
@@ -144,7 +144,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
     this.selected = this._selectionModel.selected.map(item => item.key);
   }
 
-  displaySting(filteredOptions: any) {
+  displaySting(filteredOptions: CustomSelectOptionComponent[]) {
     const checkAll = filteredOptions.find(item => item.checkAll == true);
     this.displayText = '';
     if (checkAll) {

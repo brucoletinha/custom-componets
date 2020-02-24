@@ -72,10 +72,10 @@ export class CustomSelectOptionComponent implements OnInit, Highlightable {
     this.checked = false;
   }
 
-  public isSelected(key) {
+  public isSelected() {
     return this.select._selectionModel.isSelected(this);
   }
-  public toggle(key) {
+  public toggle() {
     return this.select._selectionModel.select(this);
   }
 }

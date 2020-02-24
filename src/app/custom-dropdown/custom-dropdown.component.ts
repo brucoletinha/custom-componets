@@ -12,7 +12,7 @@ export class CustomDropdownComponent implements OnInit {
   @Input()
   public reference: HTMLElement;
  
-  @ViewChild(TemplatePortalDirective)
+  @ViewChild(TemplatePortalDirective, { static: true })
   public contentTemplate: TemplatePortalDirective;
   
   constructor(protected overlay: Overlay) { }
