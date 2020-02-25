@@ -66,8 +66,8 @@ export class CustomDropdownComponent implements OnInit {
         overlayX: 'start',
         overlayY: 'bottom'
       }*/])
-    .withDefaultOffsetY(-(this.reference.offsetHeight))
-    .withDefaultOffsetX(this.reference.offsetLeft);
+    .withDefaultOffsetY(-(this.reference.offsetHeight));
+    //.withDefaultOffsetX(this.reference.offsetLeft);
  
     return new OverlayConfig({
       positionStrategy: positionStrategy,

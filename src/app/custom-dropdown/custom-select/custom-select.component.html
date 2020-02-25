@@ -1,5 +1,4 @@
-<div class="custom-input-wrapper" multiple>
-  <div class="input" [class.required]="required" #dropreference>
+<div class="custom-input-wrapper" multiple  [class.required]="required" #dropreference>
     <label class="label-text">{{label}}</label>    
       <input #input
               placeholder={{placeholder}}
@@ -9,12 +8,14 @@
               (click)="showDropdown()"
               (keydown)="onKeyDown($event)"
               (blur)="onTouched()"
-              autocomplete="off">  
-    <div class="dropdown-arrow" (click)="onDropMenuIconClick($event)"></div>
-    <custom-dropdown checkAll [reference]="dropreference" #dropdownComp>
-      <div class="dropdown-options-container">        
-        <ng-content select="custom-select-option"></ng-content>
-      </div>
-    </custom-dropdown>
-  </div>
+              autocomplete="off">
+    <div style="background-color: red;" class="container-dropdown-arrow" (click)="onDropMenuIconClick($event)">
+      <div class="dropdown-arrow">
+        <custom-dropdown checkAll [reference]="dropreference" #dropdownComp>
+          <div class="dropdown-options-container">        
+            <ng-content select="custom-select-option"></ng-content>
+          </div>
+        </custom-dropdown>
+      </div>      
+    </div>
 </div>
