@@ -2,7 +2,7 @@
       multiple  
       [class.required]="required" 
       #dropreference>
-  <div class="custom-input-wrapper-padding-left" (click)="onDropMenuIconClick($event)"></div>
+  <div class="custom-input-wrapper-padding-left" (click)="showDropdown()"></div>
   <label class="label-text">{{label}}</label>    
   <input #input
           placeholder={{placeholder}}
@@ -13,7 +13,7 @@
           (keydown)="onKeyDown($event)"
           (blur)="onTouched()"
           autocomplete="off">
-    <div class="container-dropdown-arrow" (click)="onDropMenuIconClick($event)">
+    <div class="container-dropdown-arrow" (click)="showDropdown()">
       <div class="dropdown-arrow" (click)="onDropMenuIconClick($event)">
         <custom-dropdown checkAll [reference]="dropreference" #dropdownComp>
           <div class="dropdown-options-container">        

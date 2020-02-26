@@ -3,7 +3,7 @@ import { CustomDropdownComponent } from '../custom-dropdown.component';
 import { CustomSelectOptionComponent } from '../custom-select-option/custom-select-option.component';
 import { CustomDropdownService } from '../custom-dropdown.service';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
@@ -19,7 +19,7 @@ import { SelectionModel } from '@angular/cdk/collections';
     CustomDropdownService
   ]
 })
-export class CustomSelectComponent implements OnInit, AfterViewInit {
+export class CustomSelectComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
   @Input()
   public label: string;
@@ -203,6 +203,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit {
   
    public writeValue(obj: any): void {
      this.selected = obj;
+     this.displayText = '';
    }
   
    public onTouched() {

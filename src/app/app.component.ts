@@ -62,7 +62,12 @@ export class AppComponent implements OnInit {
     }
     console.log("formControl: ", this.profileForm3.get("item").value);*/
   }
-
+  limpar() {
+    this.profileForm3 = this.fb.group({
+      item: new FormControl([null])
+    });
+    console.log("limpar: ", this.profileForm3.get('item').value)
+  }
   selectOne(values: any) {
     console.log("selectOne: ", this.profileForm3.get('item').value)
     if (this.profileForm3.controls.item.value.length === this.data2.length) {
