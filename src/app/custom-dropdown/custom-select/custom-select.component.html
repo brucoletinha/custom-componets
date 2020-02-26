@@ -1,4 +1,7 @@
-<div class="custom-input-wrapper" multiple  [class.required]="required" #dropreference>
+<div [class]="disabled ? 'custom-input-wrapper custom-input-wrapper-disabled' : 'custom-input-wrapper'" 
+      multiple  
+      [class.required]="required" 
+      #dropreference>
   <div class="custom-input-wrapper-padding-left" (click)="onDropMenuIconClick($event)"></div>
   <label class="label-text">{{label}}</label>    
   <input #input

@@ -17,6 +17,7 @@
     height: inherit;
     border-radius: 8px 0px 0px 8px;
     width: 10px;
+    cursor: pointer;
   }
 
   .container-dropdown-arrow {
@@ -56,13 +57,21 @@
     box-sizing: border-box;
     width: inherit;
     height: inherit;
+    font-size: 14px;
+    line-height: 14px;
     border-radius: 8px 0px 0px 8px;
+
+    &:disabled {
+      cursor: default;
+      background: none !important;
+    }
   }  
 
   &:hover {
-    border: 1px solid $secondary-color-300;	
+    //border: 1px solid $secondary-color-300;	
     border-radius: 8px;
   }
+
   &.required label:after {
     color: red;
     content: "*";
@@ -79,6 +88,7 @@
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.24);
   display: block;
   overflow: auto;
+  background: #ffffff;
 
   &:hover {
     box-sizing: border-box;	
@@ -89,37 +99,56 @@
   }
 }
 
+.custom-input-wrapper-disabled  {
+  border: 1px dashed $secondary-color-300 ;
+  .custom-input-wrapper-padding-left {
+    background-color: red;
+    cursor: default ;;
+    background: none ;
+  }
+
+  .container-dropdown-arrow {
+    background-color: red ;
+    cursor: default ;
+    background: none ;
+    .dropdown-arrow { 
+      cursor: default ;
+    }
+  }
+}
+
 /* width */
 ::-webkit-scrollbar {
-width: 8px;
-border-radius: 0px 8px 8px 0px;
+  width: 8px;
+  border-radius: 0px 8px 8px 0px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-background: #f1f1f1; 
-border-radius: 0px 8px 8px 0px;
+  background: #f1f1f1; 
+  border-radius: 0px 8px 8px 0px;
+ // border-right: 1px solid $secondary-color-300;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-background: #888; 
-border-radius: 0px 8px 8px 0px;
+  background: #888; 
+  border-radius: 0px 8px 8px 0px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-background: #555; 
-border-radius: 0px 8px 8px 0px;
+  background: #555; 
+  border-radius: 0px 8px 8px 0px;
 }
 
 ::placeholder {
-color: $secondary-color-300;
-opacity: 1; /* Firefox */
+  color: $secondary-color-300;
+  opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-color: $secondary-color-300;
+  color: $secondary-color-300;
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
