@@ -13,14 +13,20 @@
   border-radius: 8px;
   border: solid 1px $secondary-color-300;
 
+  .custom-input-wrapper-padding-left {
+    height: inherit;
+    border-radius: 8px 0px 0px 8px;
+    width: 10px;
+  }
+
   .container-dropdown-arrow {
-    //position: relative;
-    background-color: red;
-    //height: inherit;
+    position: relative;
+    height: inherit;
     border-radius: 0px 6px 6px 0px;
     box-sizing: border-box;
     cursor: pointer;
-    padding-right: 12px;
+    padding-right: 20px;
+    //padding-left: 12px;
 
     .dropdown-arrow {
       width: 0;
@@ -30,6 +36,9 @@
       border-top: 5px solid #000000;
       display: inline-flex;
       cursor: pointer;
+      position: absolute;
+      margin: 0 auto;
+      top: 50%;
     }
   }
  
