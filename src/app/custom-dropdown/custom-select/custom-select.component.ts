@@ -204,6 +204,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit, ControlValu
    public writeValue(obj: any): void {
      this.selected = obj;
      this.displayText = '';
+     this._selectionModel.clear();
    }
   
    public onTouched() {
