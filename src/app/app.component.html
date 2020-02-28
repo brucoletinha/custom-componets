@@ -80,9 +80,47 @@
 </div>
 -->
 <div>
-  <app-custom-input></app-custom-input>
+  <app-custom-input
+      name="userName"
+      label="User Name"
+      placeholder="Please enter your user name"
+      minlength="3"
+      maxlength="6"
+      [required]="false"
+      [(ngModel)]="customInput"
+      (click)="mostrar()">
+    </app-custom-input>
+</div>
+<div>
+  <app-custom-input
+    required="true"
+    name="userName"
+    label="User Name"
+    placeholder="User Name"
+    minlength="3"
+    maxlength="6"
+    [required]="false"
+    [(ngModel)]="customInput2"
+    (click)="mostrar()">
+  </app-custom-input>
+</div>
+
+<div>
+  <app-custom-input
+    type=""
+    required="true"
+    name="userName"
+    label="User Name"
+    placeholder="User Name"
+    minlength="3"
+    maxlength="6"
+    [required]="false"
+    [(ngModel)]="customInput2"
+    (click)="mostrar()">
+  </app-custom-input>
 </div>
 <button (click)="limpar()">Limpar</button>
+
 
 <!--
 <custom-select [required]="true"

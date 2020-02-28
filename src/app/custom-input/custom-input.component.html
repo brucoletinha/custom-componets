@@ -1,6 +1,20 @@
 <div class="custom-input-wrapper">
-    <div class="custom-input-inside">
-        <input type="text" class="custom-input" required placeholder="Email">
-        <label class="custom-input-label">Email</label>
+    <div class="custom-input-inside" [class.required]="required">
+        <input  
+                class="{{ hasValue ? 'custom-input has-value' : 'custom-input' }}"              
+                [required]="required"
+                [disabled]="disabled"
+                [minlength]="minlength"
+                [maxlength]="maxlength"
+                [placeholder]="placeholder"
+                [(ngModel)]="data"
+                [ngModelOptions]="{standalone: true}"                
+                (input)="onChange()"
+                (change)="onChange()"
+                (blur)="onTouchedFn()">
+        <label class="custom-input-label">{{ label }}</label>
+        <div class="error-message" *ngIf="showError">
+            {{errors[0]}}
+        </div>
     </div>
 </div>

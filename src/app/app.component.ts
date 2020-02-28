@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   selectedDestination3 = new FormControl('');
   public selectedDestination4: string;
   public selectedDestination5: any;
+  public customInput;
+  public customInput2;
 
   constructor(private fb: FormBuilder) { }
 
@@ -40,6 +42,8 @@ export class AppComponent implements OnInit {
   data = ["Paris",  "Mauritius",  "Singapore",  "Malaysia",  "Goa",  "Thailand"];
   
   data2 = [{id: 1, name:"Paris"}, {id: 2, name:"Mauritius"}, {id: 3, name:"Singapore"},  {id: 4, name:"Malaysia"},  {id: 5, name:"Goa"},{id: 6, name:"Thailand"} ];
+  
+  errors = new Map<string, () => string>();
   showContent() {
     console.log(this.profileForm3.get("item").value);
     console.log(this.selectedDestination5);
@@ -62,11 +66,17 @@ export class AppComponent implements OnInit {
     }
     console.log("formControl: ", this.profileForm3.get("item").value);*/
   }
+  mostrar () {
+    console.log("this.customInput: ", this.customInput)
+  }
+
   limpar() {
     this.profileForm3 = this.fb.group({
       item: new FormControl([null])
     });
     console.log("limpar: ", this.profileForm3.get('item').value)
+    this.customInput = null;
+    this.customInput2 = null;
   }
   selectOne(values: any) {
     console.log("selectOne: ", this.profileForm3.get('item').value)
