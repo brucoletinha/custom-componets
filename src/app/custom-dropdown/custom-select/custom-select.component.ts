@@ -39,6 +39,9 @@ export class CustomSelectComponent implements OnInit, AfterViewInit, ControlValu
   @Input()
   public multiple = false;
 
+  @Input()
+  public markAll = false;
+
   @ViewChild('input', { static: true })
   public input: ElementRef;
   
@@ -76,6 +79,8 @@ export class CustomSelectComponent implements OnInit, AfterViewInit, ControlValu
      .withHorizontalOrientation('ltr')
      .withVerticalOrientation()
      .withWrap();
+     
+      this.markAllOptions();
     });
   }
 
@@ -141,7 +146,6 @@ export class CustomSelectComponent implements OnInit, AfterViewInit, ControlValu
       }
     }    
     this.displaySting(this._selectionModel.selected);  
-    this.selected = this._selectionModel.selected.filter(item => !item.checkAll).map(item => item.key);
   }
 
   displaySting(filteredOptions: CustomSelectOptionComponent[]) {
@@ -153,6 +157,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit, ControlValu
       const valueOptions = filteredOptions.filter(item => !item.checkAll).map(item => item.value);
       this.displayText = valueOptions.join(', ');
     }
+    this.selected = this._selectionModel.selected.filter(item => !item.checkAll).map(item => item.key);
   }
    
   public hideDropdown() {
@@ -183,6 +188,17 @@ export class CustomSelectComponent implements OnInit, AfterViewInit, ControlValu
       this.keyManager.onKeydown(event);
     } else if (event.key === 'PageUp' || event.key === 'PageDown' || event.key === 'Tab') {
       this.dropdown.showing && event.preventDefault();
+    }
+   }
+
+   public markAllOptions () {
+     const _options = this.options.toArray();
+     const checkAll = this.dropdownService.getCheckAll();
+     if (this.markAll && this.multiple) {
+      _options.forEach(item => {
+        this._selectionModel.select(item);
+      });
+      this.displaySting(this._selectionModel.selected);
     }
    }
 

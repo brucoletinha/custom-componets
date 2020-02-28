@@ -15,7 +15,7 @@
           autocomplete="off">
     <div class="container-dropdown-arrow" (click)="showDropdown()">
       <div class="dropdown-arrow" (click)="onDropMenuIconClick($event)">
-        <custom-dropdown checkAll [reference]="dropreference" #dropdownComp>
+        <custom-dropdown markAll checkAll [reference]="dropreference" #dropdownComp>
           <div class="dropdown-options-container">        
             <ng-content select="custom-select-option"></ng-content>
           </div>

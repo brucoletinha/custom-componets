@@ -102,13 +102,11 @@
 .custom-input-wrapper-disabled  {
   border: 1px dashed $secondary-color-300 ;
   .custom-input-wrapper-padding-left {
-    background-color: red;
     cursor: default ;;
     background: none ;
   }
 
   .container-dropdown-arrow {
-    background-color: red ;
     cursor: default ;
     background: none ;
     .dropdown-arrow { 
@@ -127,7 +125,7 @@
 ::-webkit-scrollbar-track {
   background: #f1f1f1; 
   border-radius: 0px 8px 8px 0px;
- // border-right: 1px solid $secondary-color-300;
+  border-right: 1px solid $secondary-color-300;
 }
 
 /* Handle */
