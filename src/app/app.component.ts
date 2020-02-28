@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   public selectedDestination5: any;
   public customInput;
   public customInput2;
+  public customInput3;
 
   constructor(private fb: FormBuilder) { }
 
@@ -37,6 +38,10 @@ export class AppComponent implements OnInit {
     item: new FormControl([null])
   });
   
+  toppings = new FormControl();
+
+  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+
   title = 'angular-dropdown';
 
   data = ["Paris",  "Mauritius",  "Singapore",  "Malaysia",  "Goa",  "Thailand"];

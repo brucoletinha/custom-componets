@@ -37,6 +37,9 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
   @Input()
   public maxlength = 0;
 
+  @Input()
+  public type = "text";
+
   public hasValue = false;
 
   ngOnInit(): void {

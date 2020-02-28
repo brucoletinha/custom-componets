@@ -1,5 +1,6 @@
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { OverlayModule, OverlayContainer } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
@@ -13,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomInputComponent } from './custom-input/custom-input.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -23,14 +25,16 @@ import { CustomInputComponent } from './custom-input/custom-input.component';
     CustomInputComponent
   ],
   imports: [
-    BrowserModule,    
+    BrowserModule,
+    BrowserAnimationsModule, 
     FormsModule,
     ReactiveFormsModule,
     OverlayModule,
     PortalModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

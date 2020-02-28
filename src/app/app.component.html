@@ -77,16 +77,27 @@
     </div>
   </form>
   </div>
+
+<mat-form-field>
+  <mat-label>Toppings</mat-label>
+  <mat-select [formControl]="toppings" multiple>
+    <mat-select-trigger>
+      {{toppings.value ? toppings.value[0] : ''}}
+      <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+        (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+    </mat-select-trigger>
+    <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+  </mat-select>
+</mat-form-field>
 </div>
 -->
+
 <div>
   <app-custom-input
       name="userName"
       label="User Name"
       placeholder="Please enter your user name"
-      minlength="3"
-      maxlength="6"
-      [required]="false"
       [(ngModel)]="customInput"
       (click)="mostrar()">
     </app-custom-input>
@@ -107,15 +118,13 @@
 
 <div>
   <app-custom-input
-    type=""
-    required="true"
+    type="textarea"
     name="userName"
     label="User Name"
     placeholder="User Name"
-    minlength="3"
-    maxlength="6"
+    maxlength="255"
     [required]="false"
-    [(ngModel)]="customInput2"
+    [(ngModel)]="customInput3"
     (click)="mostrar()">
   </app-custom-input>
 </div>

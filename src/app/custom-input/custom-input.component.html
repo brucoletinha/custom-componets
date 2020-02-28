@@ -1,6 +1,6 @@
 <div class="custom-input-wrapper">
     <div class="custom-input-inside" [class.required]="required">
-        <input  
+        <input  [type]="type"
                 class="{{ hasValue ? 'custom-input has-value' : 'custom-input' }}"              
                 [required]="required"
                 [disabled]="disabled"

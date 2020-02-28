@@ -160,6 +160,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit, ControlValu
   }
 
   public onKeyDown(event: KeyboardEvent) {
+  
     if (['Enter', ' ', 'ArrowDown', 'Down', 'ArrowUp', 'Up'].indexOf(event.key) > -1) {
       if (!this.dropdown.showing) {
         this.showDropdown();
