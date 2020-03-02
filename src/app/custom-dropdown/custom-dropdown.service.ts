@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CustomSelectComponent } from './custom-select/custom-select.component';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CustomDropdownService {
 
   constructor() { }

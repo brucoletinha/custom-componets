@@ -3,7 +3,7 @@ import { TemplatePortalDirective } from '@angular/cdk/portal';
 import { Overlay, OverlayRef, OverlayConfig } from '@angular/cdk/overlay';
 
 @Component({
-  selector: 'custom-dropdown',
+  selector: 'app-custom-dropdown',
   templateUrl: './custom-dropdown.component.html',
   styleUrls: ['./custom-dropdown.component.scss']
 })

@@ -3,7 +3,6 @@
       [class.required]="required" 
       #dropreference>
   <div class="custom-input-wrapper-padding-left" (click)="showDropdown()"></div>
-  <label class="label-text">{{label}}</label>    
   <input #input
           placeholder={{placeholder}}
           [disabled]="disabled"
@@ -15,11 +14,12 @@
           autocomplete="off">
     <div class="container-dropdown-arrow" (click)="showDropdown()">
       <div class="dropdown-arrow" (click)="onDropMenuIconClick($event)">
-        <custom-dropdown markAll checkAll [reference]="dropreference" #dropdownComp>
+        <app-custom-dropdown markAll checkAll [reference]="dropreference" #dropdownComp>
           <div class="dropdown-options-container">        
-            <ng-content select="custom-select-option"></ng-content>
+            <ng-content select="app-custom-select-option"></ng-content>
           </div>
-        </custom-dropdown>
+        </app-custom-dropdown>
       </div>      
-    </div>
+    </div>    
+  <label class="label-text">{{label}}</label>    
 </div>

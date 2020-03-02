@@ -7,7 +7,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
-  selector: 'custom-select',
+  selector: 'app-custom-select',
   templateUrl: './custom-select.component.html',
   styleUrls: ['./custom-select.component.scss'],
   providers: [
@@ -192,14 +192,16 @@ export class CustomSelectComponent implements OnInit, AfterViewInit, ControlValu
    }
 
    public markAllOptions () {
-     const _options = this.options.toArray();
-     const checkAll = this.dropdownService.getCheckAll();
-     if (this.markAll && this.multiple) {
-      _options.forEach(item => {
-        this._selectionModel.select(item);
-      });
-      this.displaySting(this._selectionModel.selected);
-    }
+     if (this.options) {
+        const _options = this.options.toArray();
+        const checkAll = this.dropdownService.getCheckAll();
+        if (this.markAll && this.multiple) {
+        _options.forEach(item => {
+          this._selectionModel.select(item);
+        });
+        this.displaySting(this._selectionModel.selected);
+      }
+     }
    }
 
    public onChangeFn = (_: any) => {};
@@ -222,6 +224,7 @@ export class CustomSelectComponent implements OnInit, AfterViewInit, ControlValu
      this.selected = obj;
      this.displayText = '';
      this._selectionModel.clear();
+     this.markAllOptions();
    }
   
    public onTouched() {

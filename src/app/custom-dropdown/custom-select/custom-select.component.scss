@@ -78,7 +78,22 @@
     position: relative;
     left: 5px;
     bottom: 5px;
-  }  
+  }
+  
+  .label-text {
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    opacity:0;
+    background-color: #fff;
+    padding: 0 2px;
+    font-size: 12px;
+    -webkit-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+    color: #9e9e9e;
+    opacity: 1;
+  }
 }
  
 .dropdown-options-container {

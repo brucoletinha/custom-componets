@@ -4,7 +4,7 @@ import { CustomDropdownService } from '../custom-dropdown.service';
 import { Highlightable } from '@angular/cdk/a11y';
 
 @Component({
-  selector: 'custom-select-option',
+  selector: 'app-custom-select-option',
   templateUrl: './custom-select-option.component.html',
   styleUrls: ['./custom-select-option.component.scss']
 })

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,12 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.data = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+    }, 1000);
+  }
   checkAll: boolean;
   ngOnInit(): void {
     this.checkAll = false;
