@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomInputComponent } from './custom-input/custom-input.component';
 import { MatSelectModule } from '@angular/material/select';
+import { CustomTextareaComponent } from './custom-textarea/custom-textarea.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MatSelectModule } from '@angular/material/select';
     CustomDropdownComponent,
     CustomSelectComponent,
     CustomSelectOptionComponent,
-    CustomInputComponent
+    CustomInputComponent,
+    CustomTextareaComponent
   ],
   imports: [
     BrowserModule,
