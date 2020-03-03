@@ -96,30 +96,18 @@
 -->
 <!--
 <div>
-  <app-app-custom-input
+  <app-custom-input
       name="userName"
       label="User Name"
       placeholder="Please enter your user name"
       [(ngModel)]="customInput"
       (click)="mostrar()">
-    </app-app-custom-input>
-</div>
-<div>
-  <app-app-custom-input
-    required="true"
-    name="userName"
-    label="User Name"
-    placeholder="User Name"
-    minlength="3"
-    maxlength="6"
-    [required]="false"
-    [(ngModel)]="customInput2"
-    (click)="mostrar()">
-  </app-app-custom-input>
+    </app-custom-input>
 </div>
 
+
 <div>
-  <app-app-custom-input
+  <app-custom-input
     type="textarea"
     name="userName"
     label="User Name"
@@ -128,10 +116,10 @@
     [required]="false"
     [(ngModel)]="customInput3"
     (click)="mostrar()">
-  </app-app-custom-input>
+  </app-custom-input>
 </div>
 -->
-
+<!--
 <div>
   <form  [formGroup]="profileForm3" >
     <div>
@@ -163,7 +151,23 @@
       </div>
     </form>
     </div>
+    -->
+
+    <div>
+      <app-custom-input
+        required="true"
+        name="userName"
+        label="User Name"
+        placeholder="User Name"
+        minlength="3"
+        maxlength="6"
+        [required]="false"
+        [(ngModel)]="customInput2"
+        (click)="mostrar()">
+      </app-custom-input>
+    </div>
 <button (click)="limpar()">Limpar</button>
+</div>
 
 
 <!--
