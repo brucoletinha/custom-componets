@@ -1,11 +1,13 @@
-* {
-  box-sizing: border-box;  
-}
 app-custom-select {
     display: inline-flex;
     width: 218px;
     height: 48px;
     margin-right: 24px;
+}
+
+app-custom-textarea {
+  width: 611px;
+  margin-right: 24px;
 }
 
 .container {

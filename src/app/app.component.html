@@ -105,6 +105,19 @@
     </app-custom-input>
 </div>
 
+    <div>
+      <app-custom-input
+        required="true"
+        name="userName"
+        label="User Name"
+        placeholder="User Name"
+        minlength="3"
+        maxlength="6"
+        [required]="false"
+        [(ngModel)]="customInput2"
+        (click)="mostrar()">
+      </app-custom-input>
+    </div>
 
 <div>
   <app-custom-input
@@ -152,21 +165,32 @@
     </form>
     </div>
     -->
+<div>  
+  <app-custom-textarea 
+    value="GOOGLE LLC, ACCOUNTS RECEIVABLE    ACCOUNTS RECEIVABLE                1600 AMPHITHEATRE PKWY             MOUNTAIN VIEW CA US 94043-1351" 
+    [hasLabel]="true"
+    label="Ordenante"
+    [removeWhiteSpace]="true"
+    [hasClassDefault]="false"
+    breakLineWhithSpace="3"
+    rows="5">
+  </app-custom-textarea>
+</div>
 
-    <div>
-      <app-custom-input
-        required="true"
-        name="userName"
-        label="User Name"
-        placeholder="User Name"
-        minlength="3"
-        maxlength="6"
-        [required]="false"
-        [(ngModel)]="customInput2"
-        (click)="mostrar()">
-      </app-custom-input>
-    </div>
-<button (click)="limpar()">Limpar</button>
+<div>  
+  <app-custom-textarea 
+    value="GOOGLE LLC, ACCOUNTS RECEIVABLE    ACCOUNTS RECEIVABLE                1600 AMPHITHEATRE PKWY             MOUNTAIN VIEW CA US 94043-1351" 
+    [hasLabel]="true"
+    label="Ordenante"
+    [removeWhiteSpace]="false"
+    [hasClassDefault]="true"
+    breakLineWhithSpace="3"
+    rows="5">
+  </app-custom-textarea>
+</div>
+<div>
+  <button (click)="limpar()">Limpar</button>
+</div>
 </div>
 
 

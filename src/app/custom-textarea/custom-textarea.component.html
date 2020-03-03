@@ -1,1 +1,16 @@
-<p>custom-textarea works!</p>
+<div class="custom-textarea-wrapper">
+    <div class="custom-textarea-inside" [class.required]="required">
+
+        <textarea
+            class="{{ hasClassDefault ? (hasLabel ? 'custom-textarea has-value' : 'custom-textarea') : 'custom-textarea-default has-value has-resize-disabled' }}"
+            [disabled]="disabled"
+            [cols]="cols"
+            [rows]="rows"
+        >{{ value }}</textarea>
+
+        <label class="custom-textarea-label">{{ label }}</label>
+        <div class="custom-error-message" *ngIf="showError">
+            <label>{{errors[0]}}</label>
+        </div>
+    </div>
+</div>
