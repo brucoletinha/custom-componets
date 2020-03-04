@@ -10,7 +10,7 @@
   display: flex;
   margin: 0;
   outline: 0;
-  border-radius: 8px;
+  border-radius: $default-border-radius;
   border: solid 1px $secondary-color-300;
 
   .custom-input-wrapper-padding-left {
@@ -68,8 +68,12 @@
   }  
 
   &:hover {
-    //border: 1px solid $secondary-color-300;	
-    border-radius: 8px;
+    border: 1px solid $primary-color-400;	
+    border-radius: $default-border-radius;
+
+    .label-text {
+      color: $primary-color-400 !important;
+    }
   }
 
   &.required label:after {
@@ -85,39 +89,39 @@
     top: -8px;
     left: 10px;
     opacity:0;
-    background-color: #fff;
+    background-color: $bs2-white;
     padding: 0 2px;
     font-size: 12px;
     -webkit-transition: 0.2s ease-in-out;
     -o-transition: 0.2s ease-in-out;
     transition: 0.2s ease-in-out;
-    color: #9e9e9e;
+    color: $secondary-color-300;
     opacity: 1;
   }
 }
  
 .dropdown-options-container {
   width: 100%;
-  border-radius: 8px;
+  border-radius: $default-border-radius;
   border: 1px solid $secondary-color-300;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.24);
   display: block;
   overflow: auto;
-  background: #ffffff;
+  background: $bs2-white;
 
   &:hover {
     box-sizing: border-box;	
     border: 1px solid $secondary-color-300;	
-    border-radius: 8px;	
-    background-color: #FFFFFF;	
+    border-radius: $default-border-radius;	
+    background-color: $bs2-white;	
     //box-shadow: 0 0 0 3px #D6D6F5;
   }
 }
 
 .custom-input-wrapper-disabled  {
-  border: 1px dashed $secondary-color-300 ;
+  border: 1px dashed $secondary-color-300 !important;
   .custom-input-wrapper-padding-left {
-    cursor: default ;;
+    cursor: default;
     background: none ;
   }
 
@@ -146,7 +150,7 @@
   /* Handle */
   ::-webkit-scrollbar-thumb {
   background: $secondary-color-200; 
-  border-radius: 8px;//0px 8px 8px 0px;
+  border-radius: $default-border-radius;//0px 8px 8px 0px;
   }
   
   ::placeholder {
