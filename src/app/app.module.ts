@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { OverlayModule, OverlayContainer } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 import { AppComponent } from './app.component';
 import { CustomDropdownComponent } from './custom-dropdown/custom-dropdown.component';
@@ -36,7 +37,8 @@ import { CustomTextareaComponent } from './custom-textarea/custom-textarea.compo
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    TextFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -106,13 +106,13 @@ export class CustomTextareaComponent implements OnInit, ControlValueAccessor {
     const words = this.value.split(' ');
     let newText = '';
     if(words.length) {
-      for(let i=0, start=0; i < words.length; i++, start++) {
-        newText += words[i];
+      for(let i=0, start=0; i < words.length; i++, start++) {        
         if(start % this.breakLineWhithSpace == 0 && start) {
           newText +="\n";
-        }else if(start) {
+        } else if(start) {
           newText +=" ";
         }
+        newText += words[i];
       }
       this.value = newText;
     }

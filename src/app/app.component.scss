@@ -7,10 +7,15 @@ app-custom-select {
 
 app-custom-textarea {
   width: 611px;
+  height: 184px;
   margin-right: 24px;
 }
 
 .container {
     display: inline-flex;
     padding: 24px;
+
+    .div-container {
+      margin: 10px;
+    }
 }
