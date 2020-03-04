@@ -134,36 +134,30 @@
 ::-webkit-scrollbar {
   width: 8px;
   border-radius: 0px 8px 8px 0px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
   background: #f1f1f1; 
   border-radius: 0px 8px 8px 0px;
-  border-right: 1px solid $secondary-color-300;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888; 
-  border-radius: 0px 8px 8px 0px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-  border-radius: 0px 8px 8px 0px;
-}
-
-::placeholder {
+  //border-right: 1px solid $secondary-color-300;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+  background: $secondary-color-200; 
+  border-radius: 8px;//0px 8px 8px 0px;
+  }
+  
+  ::placeholder {
   color: $secondary-color-300;
   opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: $secondary-color-300;
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-color: $secondary-color-300;
-}
+  }
+    
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: $secondary-color-300;
+  }

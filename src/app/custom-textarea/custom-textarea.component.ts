@@ -65,6 +65,9 @@ export class CustomTextareaComponent implements OnInit, ControlValueAccessor {
   @Input()
   public hasClassDefault: boolean = true;
 
+  @Input()
+  public readonly: boolean = false;
+
   ngOnInit(): void {
     if(this.breakLineWhithSpace)
       this.onBreakLine();

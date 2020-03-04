@@ -108,14 +108,8 @@ border-radius: 0px 8px 8px 0px;
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-background: #888; 
-border-radius: 0px 8px 8px 0px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-background: #555; 
-border-radius: 0px 8px 8px 0px;
+background: $secondary-color-200; 
+border-radius: 8px;//0px 8px 8px 0px;
 }
 
 ::placeholder {
