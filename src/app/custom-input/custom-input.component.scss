@@ -21,6 +21,10 @@
             color: #9e9e9e;
         }
 
+        input[class*="has-value"]:hover + .custom-input-label {
+            color: $primary-color-400;
+        }
+
         .custom-input-label {
             position: absolute;
             top: 8px;
@@ -43,22 +47,45 @@
             width: 100%;
             font-size: 1rem;
             box-sizing: border-box;
+
+            &:hover {
+                border: 1px solid $primary-color-400;
+            }
+
+            &:focus + .custom-input-label {
+                color: $primary-color-400;
+                background-color: $bs2-white;
+            }
     
             &:focus {
+                //color: $primary-color-400;
+                border: 1px solid $primary-color-400;
                 border-radius: 8px;
-                border: 1px solid #9e9e9e;
+                background-color: $bs2-white;
+                box-shadow: 0 0 0 3px $primary-color-200;
             }
             
             &:focus + .custom-input-label {
                 opacity: 1;
                 top: -6px;
-                color: #9e9e9e;
+                color: $primary-color-400;                
             }
 
             &:disabled {
                 cursor: default;
                 background: none !important;
                 border: 1px dashed $secondary-color-300 ;
+            }
+
+            &:invalid {
+                border: 1px solid $red-color-invalid-border;
+                border-radius: 8px;
+                background-color: $bs2-white;
+                box-shadow: 0 0 0 3px $red-color-invalid-shadow;
+            }
+
+            &:invalid + .custom-input-label {
+                color: $red-color-invalid-border !important;
             }
         }
         .custom-error-message {
