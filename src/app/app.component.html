@@ -103,7 +103,7 @@
       <form  [formGroup]="profileForm3" >
         <div>
           <app-custom-select 
-              [disabled]="false"
+              [disabled]="true"
               placeholder="Pick Your Holiday Destination"
               formControlName="item"
               [multiple]="true">
@@ -121,6 +121,7 @@
   <app-custom-input
       name="userName"
       label="User Name"
+      [disabled]="true"
       placeholder="Please enter your user name"
       [(ngModel)]="customInput"
       (click)="mostrar()">
@@ -178,6 +179,7 @@
       [removeWhiteSpace]="false"
       [hasClassDefault]="true"
       breakLineWhithSpace="3"
+      [disabled]="true"
       rows="5">
     </app-custom-textarea>
   </div>
