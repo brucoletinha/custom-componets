@@ -9,12 +9,16 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/for
 
 export class CustomInputComponent implements OnInit, ControlValueAccessor {
 
-  constructor(@Self() @Optional() public control: NgControl) {
+  constructor(@Self() @Optional() public control: NgControl) {     
     this.control && (this.control.valueAccessor = this);
-    this.errorMessages.set('required', () => `${this.label} is required.`);
-    this.errorMessages.set('minlength', () => `The no. of characters should not be less than ${this.minlength}.`);
-    this.errorMessages.set('maxlength', () => `The no. of characters should not be greater than ${this.maxlength}.`);
+    if(this.disableValidation) {
+      this.errorMessages.set('required', () => `${this.label} is required.`);
+      this.errorMessages.set('minlength', () => `The no. of characters should not be less than ${this.minlength}.`);
+      this.errorMessages.set('maxlength', () => `The no. of characters should not be greater than ${this.maxlength}.`);
+    }
  }
+
+   public disableValidation = true;
 
   @Input()
   public label: string;

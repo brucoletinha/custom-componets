@@ -13,7 +13,7 @@
                 (change)="onChange()"
                 (blur)="onTouchedFn()">
         <label class="custom-input-label">{{ label }}</label>
-        <div class="custom-error-message" *ngIf="showError">
+        <div class="custom-error-message" *ngIf="showError && !disableValidation">
             <label>{{errors[0]}}</label>
         </div>
     </div>
