@@ -76,6 +76,10 @@
                 border: 1px dashed $secondary-color-300 ;
             }
 
+            &:disabled + .custom-textarea-label{
+                color: $secondary-color-300 !important;
+            }
+
             &:invalid {
                 border: 1px solid $red-color-invalid-border;
                 border-radius: $default-border-radius;
