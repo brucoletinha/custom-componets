@@ -5,8 +5,8 @@
   padding: 0 0.875rem;
   height: 2.5rem;
   line-height: 2.5rem;
-  color: $secondary-color-400;
-  background-color: #fff;
+  //color: $secondary-color-400;
+  //background-color: #fff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -15,26 +15,30 @@
   font-family: $default-font-family;
   font-weight: 600;
   font-size: 14px;
+
+    //config cor
+    background-color: $primary-color-400;
+    color: white;
  
   &.selected {
-    background-color: #f7f7f7;
+    background-color: $primary-color-500;
     font-weight: 600;
  
     &:hover/*, &.active*/ {
-      background-color: #f7f7f7;
+      background-color: $primary-color-500;
  
       @media screen and (-ms-high-contrast: active) {
-        background-color: #f7f7f7;
+        background-color: $primary-color-500;
       }
     }
   }
  
   &:hover/*, &.active*/ {
     outline: none;
-    background-color: #f7f7f7;
+    background-color: $primary-color-500;
  
     @media screen and (-ms-high-contrast: active) {
-      background-color: #f7f7f7;
+      background-color: $primary-color-500;
     }
   }
  
@@ -51,12 +55,4 @@
       }
     }
   }
-}
-::ng-deep .mat-checkbox .mat-checkbox-frame {
-  border-radius: 4px !important;
-}
-
-::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
-background-color: #3333CC !important; /* Red background for example */
-border-radius: 4px !important;
 }

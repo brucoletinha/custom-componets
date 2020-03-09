@@ -1,6 +1,6 @@
 @import "src/app/shared/theme_variables.scss";
 
-.custom-input-wrapper {
+.custom-input-button-wrapper {
   position: relative;
   width: inherit;
   height: inherit;
@@ -13,11 +13,18 @@
   border-radius: $default-border-radius;
   border: solid 1px $secondary-color-300;
 
-  .custom-input-wrapper-padding-left {
+  //config cor
+  background-color: $primary-color-400;
+  color: white;
+
+  .custom-input-button-wrapper-padding-left {
     height: inherit;
     border-radius: 8px 0px 0px 8px;
     width: 10px;
     cursor: pointer;
+
+      //config cor
+    background-color: $primary-color-400;
   }
 
   .container-dropdown-arrow {
@@ -60,6 +67,10 @@
     font-size: 14px;
     line-height: 14px;
     border-radius: 8px 0px 0px 8px;
+
+    //config cor
+    background-color: $primary-color-400;
+    color: white;
 
     &:disabled {
       cursor: default;
@@ -118,9 +129,9 @@
   }
 }
 
-.custom-input-wrapper-disabled  {
+.custom-input-button-wrapper-disabled  {
   border: 1px dashed $secondary-color-300 !important;
-  .custom-input-wrapper-padding-left {
+  .custom-input-button-wrapper-padding-left {
     cursor: default;
     background: none ;
   }
