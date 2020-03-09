@@ -57,7 +57,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   errors = new Map<string, () => string>();
   showContent() {
     console.log(this.profileForm3.get("item").value);
-    console.log(this.selectedDestination5);
+    console.log(this.selectedDestination5);    
+    console.log("this.selectedDestination: ", this.selectedDestination)
   }
   // Method in component class
   trackByFn(index, item) {

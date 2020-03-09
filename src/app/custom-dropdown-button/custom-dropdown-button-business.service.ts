@@ -7,11 +7,10 @@ export class CustomDropdownButtonBusinessService {
   constructor() { }
   private select: CustomSelectButtonComponent;
   private multiple: boolean;
-  private checkAll: boolean;
+  private markDefault: boolean;
  
   public register(select: CustomSelectButtonComponent) {
     this.select = select;
-    this.multiple = this.select.multiple;
   }
  
   public getSelect(): CustomSelectButtonComponent {
@@ -22,11 +21,11 @@ export class CustomDropdownButtonBusinessService {
     return this.multiple;
   }
 
-  public getCheckAll() {
-    return this.checkAll;
+  public getMarkDefault() {
+    return this.markDefault;
   }
 
-  public setCheckAll(checkAll: boolean) {
-    this.checkAll = checkAll;
+  public setMarkDefault(markDefault: boolean) {
+    this.markDefault = markDefault;
   }
 }

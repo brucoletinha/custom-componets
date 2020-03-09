@@ -1,10 +1,8 @@
 <div [class]="disabled ? 'custom-input-button-wrapper custom-input-button-wrapper-disabled' : 'custom-input-button-wrapper'" 
-      multiple  
       [class.required]="required" 
       #dropreference>
   <div class="custom-input-button-wrapper-padding-left" (click)="disabled ? false : showDropdown()"></div>
   <input #input
-          placeholder={{placeholder}}
           [disabled]="disabled"
           readonly
           [value]="displayText"

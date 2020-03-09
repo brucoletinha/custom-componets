@@ -1,12 +1,12 @@
 <div class="container">
   <app-custom-select-button
-    placeholder="Pick Your Holiday Destination"
-    [(ngModel)]="selectedDestination"
-    #model="ngModel"               
-    [multiple]="true"
-    [markAll]="true">
-    <app-custom-select-button-option key="{{item}}" *ngFor="let item of buttons;" [value]="item.name"></app-custom-select-button-option>
+    [(ngModel)]="selectedDestination">
+    <app-custom-select-button-option (click)="showContent()" [markDefault]='true' key="0" [value]="'Teste'"></app-custom-select-button-option>
+    <app-custom-select-button-option (click)="showContent()" [key]="item" *ngFor="let item of buttons;" [value]="item.name"></app-custom-select-button-option>
   </app-custom-select-button>
+  <div>
+    Valor escolhido: {{ selectedDestination }}
+  </div>
 <!--
 <div>
   <h2>custom-select</h2>

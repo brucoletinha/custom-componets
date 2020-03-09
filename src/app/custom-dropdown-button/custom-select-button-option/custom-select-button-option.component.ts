@@ -16,8 +16,7 @@ export class CustomSelectButtonOptionComponent implements OnInit, Highlightable 
   }
 
   ngOnInit(): void {
-    this.multiple = this.dropdownService.getMultiple();
-    this.dropdownService.setCheckAll(this.checkAll);
+    this.dropdownService.setMarkDefault(this.markDefault);
   }
   
   @Input()
@@ -30,7 +29,7 @@ export class CustomSelectButtonOptionComponent implements OnInit, Highlightable 
   checked = false;
 
   @Input()
-  public checkAll = false;
+  public markDefault = false;
 
   multiple: boolean;
 

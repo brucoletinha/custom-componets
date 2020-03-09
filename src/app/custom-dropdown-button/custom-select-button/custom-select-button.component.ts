@@ -25,9 +25,6 @@ export class CustomSelectButtonComponent implements OnInit, AfterViewInit, Contr
   public label: string;
  
   @Input()
-  public placeholder: string;
- 
-  @Input()
   public selected: any;
  
   @Input()
@@ -35,9 +32,6 @@ export class CustomSelectButtonComponent implements OnInit, AfterViewInit, Contr
  
   @Input()
   public disabled = false;
-
-  @Input()
-  public multiple = false;
 
   @Input()
   public markAll = false;
@@ -55,14 +49,11 @@ export class CustomSelectButtonComponent implements OnInit, AfterViewInit, Contr
   
   private keyManager: ActiveDescendantKeyManager<CustomSelectButtonOptionComponent>
 
-  private filteredOptions: any[];
-
   constructor(private dropdownService: CustomDropdownButtonBusinessService) {
     this.dropdownService.register(this);
   }
 
   ngOnInit(): void {
-    this.filteredOptions = [];
     this.dropdownService.register(this);
     this._selectionModel = new SelectionModel(this.dropdownService.getMultiple(), []);
   }
@@ -79,8 +70,8 @@ export class CustomSelectButtonComponent implements OnInit, AfterViewInit, Contr
      .withHorizontalOrientation('ltr')
      .withVerticalOrientation()
      .withWrap();
-     
-      this.markAllOptions();
+
+      this.selectOptionDefault();
     });
   }
 
@@ -89,10 +80,9 @@ export class CustomSelectButtonComponent implements OnInit, AfterViewInit, Contr
     
     if (!this.options.length) {
       return;
-    }
-    
-    if (!this.multiple)
-      this.selected ? this.keyManager.setActiveItem(this.selectedOption) : this.keyManager.setFirstItemActive();
+    }    
+
+    this.selected ? this.keyManager.setActiveItem(this.selectedOption) : this.keyManager.setFirstItemActive();
    }
   
   public onDropMenuIconClick(event: UIEvent) {
@@ -107,57 +97,25 @@ export class CustomSelectButtonComponent implements OnInit, AfterViewInit, Contr
     this.keyManager.setActiveItem(option);
     this.selected = option.key;
     this.selectedOption = option;
-    
-    if (this.multiple) {
-      this.selectOptionMultiple(option);
-    } else {
-      this.displayText = this.selectedOption ? this.selectedOption.value : '';
-      this.hideDropdown();
-      this.input.nativeElement.focus();
-    }
+    this.displaySting(this.selectedOption);
+    this.hideDropdown();
+    this.input.nativeElement.focus();
     this.onChange();
   }
 
-  private selectOptionMultiple(option: CustomSelectButtonOptionComponent) {
-
+  private selectOptionDefault() {
     const _options = this.options.toArray();
-    if (option.checkAll) {
-      if (this._selectionModel.selected.length == _options.length) {        
-        this._selectionModel.clear();       
-      } else {
-        _options.forEach(item => {
-          this._selectionModel.select(item);
-        });
-      }
-    } else {
-      let checkAll = this._selectionModel.selected.find(item => item.checkAll == true);
-      if (checkAll) {
-        this._selectionModel.deselect(checkAll);
-      }
-      
-      if (this._selectionModel.isSelected(this.selectedOption)) {
-        this._selectionModel.deselect(this.selectedOption);
-      } else {
-        this._selectionModel.select(this.selectedOption);
-        checkAll = _options.find(item => item.checkAll == true);
-        if (checkAll && this._selectionModel.selected.length == (_options.length - 1)) {          
-          this._selectionModel.select(checkAll);        
-        }
-      }
-    }    
-    this.displaySting(this._selectionModel.selected);  
+    let markDefault = _options.find(item => item.markDefault == true);
+    if (markDefault) {
+      this._selectionModel.select(markDefault);
+      this.displaySting(markDefault); 
+    }   
   }
 
-  displaySting(filteredOptions: CustomSelectButtonOptionComponent[]) {
-    const checkAll = filteredOptions.find(item => item.checkAll == true);
+  displaySting(filteredOptions: CustomSelectButtonOptionComponent) {
     this.displayText = '';
-    if (checkAll) {
-      this.displayText = checkAll.value;
-    } else {
-      const valueOptions = filteredOptions.filter(item => !item.checkAll).map(item => item.value);
-      this.displayText = valueOptions.join(', ');
-    }
-    this.selected = this._selectionModel.selected.filter(item => !item.checkAll).map(item => item.key);
+    this.displayText = filteredOptions.value;
+    this.selected = filteredOptions.key;
   }
    
   public hideDropdown() {
@@ -191,19 +149,6 @@ export class CustomSelectButtonComponent implements OnInit, AfterViewInit, Contr
     }
    }
 
-   public markAllOptions () {
-     if (this.options) {
-        const _options = this.options.toArray();
-        const checkAll = this.dropdownService.getCheckAll();
-        if (this.markAll && this.multiple) {
-        _options.forEach(item => {
-          this._selectionModel.select(item);
-        });
-        this.displaySting(this._selectionModel.selected);
-      }
-     }
-   }
-
    public onChangeFn = (_: any) => {};
  
    public onTouchedFn = () => {};
@@ -224,7 +169,6 @@ export class CustomSelectButtonComponent implements OnInit, AfterViewInit, Contr
      this.selected = obj;
      this.displayText = '';
      this._selectionModel.clear();
-     this.markAllOptions();
    }
   
    public onTouched() {
