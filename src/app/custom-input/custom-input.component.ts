@@ -36,13 +36,13 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
   public data: string;
  
   @Input()
-  public minlength = 0;
+  public minlength;
 
   @Input()
-  public maxlength = 0;
+  public maxlength;
 
   @Input()
-  public type = "text";
+  public type;
 
   public hasValue = false;
 
