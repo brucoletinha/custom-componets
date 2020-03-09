@@ -1,9 +1,17 @@
 <div class="container">
-
+  <app-custom-select-button
+    placeholder="Pick Your Holiday Destination"
+    [(ngModel)]="selectedDestination"
+    #model="ngModel"               
+    [multiple]="true"
+    [markAll]="true">
+    <app-custom-select-button-option key="{{item}}" *ngFor="let item of buttons;" [value]="item.name"></app-custom-select-button-option>
+  </app-custom-select-button>
+<!--
 <div>
   <h2>custom-select</h2>
 
-<!--
+
 <div *ngIf="data.length > 10">
   <app-custom-select 
                   placeholder="Pick Your Holiday Destination"
@@ -17,7 +25,7 @@
     Você escolheu: {{selectedDestination}}
   </div>
 </div>
--->
+
 
 <div class="div-container">
   <app-custom-select 
@@ -28,7 +36,7 @@
   </app-custom-select>
 </div>
 
-<!--
+
 <div>
   <form>
     <app-custom-select 
@@ -66,7 +74,7 @@
     </div>
   </form>
 </div>
--->
+
 
 <div class="div-container">
   <form  [formGroup]="profileForm3" >
@@ -199,7 +207,7 @@
 <div>
   <button (click)="limpar()">Limpar</button>
 </div>
-
+-->
 
 
 <!--
@@ -216,4 +224,5 @@
   </div>
 </div>
 -->
+</div>
 

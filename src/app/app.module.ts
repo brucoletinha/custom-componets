@@ -1,3 +1,4 @@
+import { CustomSelectButtonOptionComponent } from './custom-dropdown-button/custom-select-button-option/custom-select-button-option.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CustomInputComponent } from './custom-input/custom-input.component';
 import { MatSelectModule } from '@angular/material/select';
 import { CustomTextareaComponent } from './custom-textarea/custom-textarea.component';
+import { CustomDropdownButtonComponent } from './custom-dropdown-button/custom-dropdown-button.component';
+import { CustomSelectButtonComponent } from './custom-dropdown-button/custom-select-button/custom-select-button.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { CustomTextareaComponent } from './custom-textarea/custom-textarea.compo
     CustomSelectComponent,
     CustomSelectOptionComponent,
     CustomInputComponent,
-    CustomTextareaComponent
+    CustomTextareaComponent,
+    CustomDropdownButtonComponent,
+    CustomSelectButtonComponent,
+    CustomSelectButtonOptionComponent
   ],
   imports: [
     BrowserModule,

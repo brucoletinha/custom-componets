@@ -52,6 +52,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   data = ["Paris",  "Mauritius",  "Singapore",  "Malaysia",  "Goa",  "Thailand"];
   
   data2 = [{id: 1, name:"Paris"}, {id: 2, name:"Mauritius"}, {id: 3, name:"Singapore"},  {id: 4, name:"Malaysia"},  {id: 5, name:"Goa"},{id: 6, name:"Thailand"} ];
+  buttons = [{id: 1, name:"Salvar"}, {id: 2, name:"Editar"}, {id: 3, name:"Cancelar"} ];
   
   errors = new Map<string, () => string>();
   showContent() {
