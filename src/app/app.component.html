@@ -7,6 +7,17 @@
   <div>
     Valor escolhido: {{ selectedDestination }}
   </div>
+
+  <div class="div-container">
+    <app-custom-input
+        [hasError]="true"
+        name="userName"
+        label="User Name"
+        placeholder="Please enter your user name"
+        [(ngModel)]="customInput"
+        (click)="mostrar()">
+      </app-custom-input>
+  </div>
 <!--
 <div>
   <h2>custom-select</h2>

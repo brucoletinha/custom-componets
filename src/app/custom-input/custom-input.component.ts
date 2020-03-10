@@ -43,6 +43,9 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
 
   @Input()
   public type;
+  
+  @Input()
+  public hasError: boolean = false;
 
   public hasValue = false;
 

@@ -25,6 +25,23 @@
             color: $primary-color-400;
         }
 
+        input[class*="has-error"], input[class*="has-error"]:hover, input[class*="has-error"]:focus  {
+            border: 1px solid $red-color-invalid-border;
+            border-radius: $default-border-radius;
+            background-color: $bs2-white;
+            box-shadow: 0 0 0 3px $red-color-invalid-shadow;
+        }
+
+        input[class*="has-error"] + .custom-input-label {
+            opacity: 1;
+            top: -6px;
+            color: $red-color-invalid-border !important;
+        }
+
+        input[class*="has-error"]:hover + .custom-input-label {
+            color: $red-color-invalid-border !important;
+        }
+
         .custom-input-label {
             position: absolute;
             top: 8px;

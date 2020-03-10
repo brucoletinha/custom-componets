@@ -1,7 +1,7 @@
 <div class="custom-input-wrapper">
     <div class="custom-input-inside" [class.required]="required">
         <input  [type]="type"
-                class="{{ hasValue ? 'custom-input has-value' : 'custom-input' }}"              
+                class="custom-input {{ hasValue ? ' has-value' : '' }} {{ hasError ? ' has-error' : ''}}"              
                 [required]="required"
                 [disabled]="disabled"
                 [minlength]="minlength"
