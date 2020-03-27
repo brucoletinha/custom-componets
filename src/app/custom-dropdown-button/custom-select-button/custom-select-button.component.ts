@@ -97,7 +97,8 @@ export class CustomSelectButtonComponent implements OnInit, AfterViewInit, Contr
     this.keyManager.setActiveItem(option);
     this.selected = option.key;
     this.selectedOption = option;
-    this.displaySting(this.selectedOption);
+    //this.displaySting(this.selectedOption);
+    this.selectOptionDefault();
     this.hideDropdown();
     this.input.nativeElement.focus();
     this.onChange();
@@ -109,7 +110,9 @@ export class CustomSelectButtonComponent implements OnInit, AfterViewInit, Contr
     if (markDefault) {
       this._selectionModel.select(markDefault);
       this.displaySting(markDefault); 
-    }   
+    } else {
+      this.displaySting(this.selectedOption);
+    }
   }
 
   displaySting(filteredOptions: CustomSelectButtonOptionComponent) {
