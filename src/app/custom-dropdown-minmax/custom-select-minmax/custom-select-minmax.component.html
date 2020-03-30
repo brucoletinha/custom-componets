@@ -1,0 +1,26 @@
+<div [class]="disabled ? 'custom-select-minmax-wrapper custom-select-minmax-wrapper-disabled' : 'custom-select-minmax-wrapper'" 
+      [class.required]="required"
+      #dropreference>
+  <div class="custom-select-minmax-wrapper-padding-left"  (click)="disabled ? false : showDropdown()"></div>
+  <div class="display-text" (click)="showDropdown()">
+    <span>{{ displayText }}</span>
+  </div>
+  <div class="container-dropdown-arrow" (click)="disabled ? false : showDropdown()">
+    <div class="dropdown-arrow" >
+      <app-custom-dropdown-minmax [reference]="dropreference" #dropdownComp>
+        <div class="dropdown-options-container">
+          <div>
+            <app-custom-input type="number" [required]="requiredMin" max={{maxValueInput}} [(ngModel)]="minValueInput" label="Mínimo" placeholder="Mínimo"></app-custom-input>
+          </div>
+          <div>
+            <app-custom-input type="number" [required]="requiredMax" min="{{minValueInput}}" [(ngModel)]="maxValueInput" label="Máximo" placeholder="Máximo"></app-custom-input>
+          </div>
+          <div class="buttons">
+            <button mat-raised-button color="primary" (click)="disabled ? false : onSetValuesAndDisplayText()">{{ nameButton }}</button>
+          </div>
+        </div>
+      </app-custom-dropdown-minmax>
+    </div>      
+  </div>    
+  <label class="label-text">{{label}}</label>    
+</div>

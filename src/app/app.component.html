@@ -1,24 +1,38 @@
 <div class="container">
-  <app-custom-select-button
+  <app-custom-select-minmax
+    label="Valor Op"
+    placeholder="Valor Op"
+    nameButton="Aplicar"
     [(ngModel)]="selectedDestination">
-    <app-custom-select-button-option (click)="showContent()" [markDefault]='true' key="0" [value]="'Teste'"></app-custom-select-button-option>
-    <app-custom-select-button-option (click)="showContent()" [key]="item" *ngFor="let item of buttons;" [value]="item.name"></app-custom-select-button-option>
-  </app-custom-select-button>
-  <div>
-    Valor escolhido: {{ selectedDestination }}
+  </app-custom-select-minmax>
+  <div (click)="showContent()">
+    Valor min: {{ selectedDestination?.min }}
+    Valor max: {{ selectedDestination?.max }}
   </div>
 
-  <div class="div-container">
-    <app-custom-input
-        [hasError]="true"
-        name="userName"
-        label="User Name"
-        placeholder="Please enter your user name"
-        [(ngModel)]="customInput"
-        (click)="mostrar()">
-      </app-custom-input>
+  <div>
+    <button (click)="limpar()">Limpar</button>
   </div>
-<!--
+  <app-custom-select-minmax
+  nameButton="Aplicar 2"
+  [(ngModel)]="selectedDestination">
+</app-custom-select-minmax>
+<div (click)="showContent()">
+  Valor min: {{ selectedDestination?.min }}
+  Valor max: {{ selectedDestination?.max }}
+</div>
+
+  <!--
+    <div class="div-container">
+      <app-custom-input
+          [hasError]="true"
+          name="userName"
+          label="User Name"
+          placeholder="Please enter your user name"
+          [(ngModel)]="customInput"
+          (click)="mostrar()">
+        </app-custom-input>
+    </div>
 <div>
   <h2>custom-select</h2>
 

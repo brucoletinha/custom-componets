@@ -1,0 +1,184 @@
+@import "src/app/shared/theme_variables.scss";
+
+.custom-select-minmax-wrapper {
+  position: relative;
+  width: inherit;
+  height: inherit;
+  font-family: $default-font-family; 
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  margin: 0;
+  outline: 0;
+  border-radius: $default-border-radius;
+  border: solid 1px $primary-color-400;
+  cursor: pointer;
+
+  //config cor
+  background-color: white;
+  color: $primary-color-400;
+
+  .display-text {
+    cursor: pointer;
+    width: 100%;
+  }
+  .custom-select-minmax-wrapper-padding-left {
+    height: inherit;
+    border-radius: 8px 0px 0px 8px;
+    width: 10px;
+    cursor: pointer;
+
+      //config cor
+    background-color: white;
+  }
+
+  .container-dropdown-arrow {
+    position: relative;
+    height: inherit;
+    border-radius: 0px 6px 6px 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding-right: 24px;
+
+    .dropdown-arrow {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid blue;
+      display: inline-flex;
+      cursor: pointer;
+      position: absolute;
+      margin: 0 auto;
+      top: 50%;
+    }
+  }
+ 
+  input {
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    color: $secondary-color-400;
+    outline: 0;
+    cursor: pointer;
+    font-size: inherit;
+    border: none;
+    font-family: $default-font-family;
+    box-sizing: border-box;
+    width: inherit;
+    height: inherit;
+    font-size: 14px;
+    line-height: 14px;
+    border-radius: 8px 0px 0px 8px;
+
+    //config cor
+    background-color: white;
+    color: white;
+
+    &:disabled {
+      cursor: default;
+      background: none !important;
+    }
+  }  
+
+  &:hover {
+    border: 1px solid $primary-color-400;	
+    border-radius: $default-border-radius;
+
+    .label-text {
+      color: $primary-color-400 !important;
+    }
+  }
+
+  &.required label:after {
+    color: red;
+    content: "*";
+    position: relative;
+    left: 5px;
+    bottom: 5px;
+  }
+  
+  .label-text {
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    opacity:0;
+    background-color: $bs2-white;
+    padding: 0 2px;
+    font-size: 12px;
+    -webkit-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+    color: $secondary-color-300;
+    opacity: 1;
+  }
+}
+ 
+.dropdown-options-container {
+  width: 100%;
+  border-radius: $default-border-radius;
+  border: 1px solid $primary-color-400;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.24);
+  display: block;
+  overflow: auto;
+  background: white;
+  padding: 10px;
+
+  div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    button {
+      width: 100%;
+      height: 48px;
+      border-radius: 8px;
+    }
+  }
+}
+
+.custom-select-minmax-wrapper-disabled  {
+  border: 1px dashed $secondary-color-300 !important;
+  .custom-select-minmax-wrapper-padding-left {
+    cursor: default;
+    background: none ;
+  }
+
+  .container-dropdown-arrow {
+    cursor: default ;
+    background: none ;
+    .dropdown-arrow { 
+      cursor: default ;
+    }
+  }
+
+  /* width */
+::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 0px 8px 8px 0px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+  background: $primary-color-400; 
+  border-radius: 0px 8px 8px 0px;
+  //border-right: 1px solid $secondary-color-300;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+  background: $bs2-white; 
+  border-radius: $default-border-radius;//0px 8px 8px 0px;
+  }
+  
+  ::placeholder {
+  color: $secondary-color-300;
+  opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $secondary-color-300;
+  }
+    
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: $secondary-color-300;
+  }
+}

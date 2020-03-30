@@ -11,11 +11,11 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
 
   constructor(@Self() @Optional() public control: NgControl) {     
     this.control && (this.control.valueAccessor = this);
-    if(this.disableValidation) {
       this.errorMessages.set('required', () => `${this.label} is required.`);
       this.errorMessages.set('minlength', () => `The no. of characters should not be less than ${this.minlength}.`);
       this.errorMessages.set('maxlength', () => `The no. of characters should not be greater than ${this.maxlength}.`);
-    }
+      this.errorMessages.set('min', () => `The no. min should not be less than ${this.min}.`);
+      this.errorMessages.set('max', () => `The no. max should not be greater than ${this.max}.`);
  }
 
    public disableValidation = true;
@@ -48,6 +48,12 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
   public hasError: boolean = false;
 
   public hasValue = false;
+
+  @Input()
+  public min;
+
+  @Input()
+  public max;
 
   ngOnInit(): void {
   }

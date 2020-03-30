@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.checkAll = false;
   }
-  public selectedDestination: string;
+  public selectedDestination: any;
   public selectedDestination2: string;
   selectedDestination3 = new FormControl('');
   public selectedDestination4: string;
@@ -56,6 +56,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   
   errors = new Map<string, () => string>();
   showContent() {
+    console.group(this.customInput)
     console.log(this.profileForm3.get("item").value);
     console.log(this.selectedDestination5);    
     console.log("this.selectedDestination: ", this.selectedDestination)
@@ -89,6 +90,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     console.log("limpar: ", this.profileForm3.get('item').value)
     this.customInput = null;
     this.customInput2 = null;
+    this.selectedDestination = null;
   }
   selectOne(values: any) {
     console.log("selectOne: ", this.profileForm3.get('item').value)

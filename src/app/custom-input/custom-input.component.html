@@ -3,6 +3,8 @@
         <input  [type]="type"
                 class="custom-input {{ hasValue ? ' has-value' : '' }} {{ hasError ? ' has-error' : ''}}"              
                 [required]="required"
+                [min]="min"
+                [max]="max"
                 [disabled]="disabled"
                 [minlength]="minlength"
                 [maxlength]="maxlength"
