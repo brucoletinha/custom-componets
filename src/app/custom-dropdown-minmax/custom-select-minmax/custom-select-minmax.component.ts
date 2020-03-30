@@ -36,10 +36,8 @@ export class CustomSelectMinMaxComponent implements OnInit, AfterViewInit, Contr
   @Input()
   public nameButton = '';
 
-  @Input()
   minValueInput: any;
 
-  @Input()
   maxValueInput: any;
 
   @Input()
@@ -58,8 +56,7 @@ export class CustomSelectMinMaxComponent implements OnInit, AfterViewInit, Contr
   }
 
   ngOnInit(): void {
-    this.dropdownService.register(this);    
-    this.displayText = this.placeholder;
+    this.dropdownService.register(this);
   }
 
   ngAfterViewInit(): void {
@@ -72,6 +69,7 @@ export class CustomSelectMinMaxComponent implements OnInit, AfterViewInit, Contr
  
   public showDropdown() {
     this.dropdown.show();
+    event.stopPropagation();
   }
     
   public hideDropdown() {
@@ -105,7 +103,6 @@ export class CustomSelectMinMaxComponent implements OnInit, AfterViewInit, Contr
    }
 
    onSetValuesAndDisplayText() {
-     debugger;
     this.displayText = this.onSetDisplayText(this.minValueInput, this.maxValueInput);
     this.result = { min: this.minValueInput, max: this.maxValueInput };
     this.onChange();
@@ -142,8 +139,10 @@ export class CustomSelectMinMaxComponent implements OnInit, AfterViewInit, Contr
    }
   
    public writeValue(obj: any): void {
-     this.selected = obj;
-     this.displayText = this.placeholder;
+     this.result = obj;
+     this.displayText = this.placeholder ? this.placeholder : '';
+     this.minValueInput = null;
+     this.maxValueInput = null;
    }
   
    public onTouched() {

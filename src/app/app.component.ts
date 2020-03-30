@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.checkAll = false;
   }
   public selectedDestination: any;
-  public selectedDestination2: string;
+  public selectedDestination2: any;
   selectedDestination3 = new FormControl('');
   public selectedDestination4: string;
   public selectedDestination5: any;
