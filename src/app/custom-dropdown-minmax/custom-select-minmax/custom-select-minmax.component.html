@@ -10,7 +10,6 @@
       readonly
       [value]="displayText"
       (click)="showDropdown()"
-      (keydown)="onKeyDown($event)"
       (blur)="onTouched()"
       autocomplete="off">
   </div>
@@ -25,7 +24,7 @@
             <app-custom-input type="number" [required]="requiredMax" min="{{minValueInput}}" [(ngModel)]="maxValueInput" label="Máximo" placeholder="Máximo"></app-custom-input>
           </div>
           <div class="buttons">
-            <button mat-raised-button color="primary" (click)="disabled ? false : onSetValuesAndDisplayText()">{{ nameButton }}</button>
+            <button mat-raised-button [disabled]="isInvalid()" color="primary" (click)="disabled ? false : onSetValuesAndDisplayText()">{{ nameButton }}</button>
           </div>
         </div>
       </app-custom-dropdown-minmax>

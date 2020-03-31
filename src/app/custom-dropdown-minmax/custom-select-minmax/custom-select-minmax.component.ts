@@ -20,10 +20,7 @@ export class CustomSelectMinMaxComponent implements OnInit, AfterViewInit, Contr
 
   @Input()
   public label: string;
- 
-  @Input()
-  public selected: any;
- 
+  
   @Input()
   public required = false;
  
@@ -36,15 +33,15 @@ export class CustomSelectMinMaxComponent implements OnInit, AfterViewInit, Contr
   @Input()
   public nameButton = '';
 
-  minValueInput: any;
-
-  maxValueInput: any;
-
   @Input()
   requiredMin: boolean;
 
   @Input()
   requiredMax: boolean;
+
+  minValueInput: number;
+
+  maxValueInput: number;
 
   result: any;
   
@@ -75,32 +72,6 @@ export class CustomSelectMinMaxComponent implements OnInit, AfterViewInit, Contr
   public hideDropdown() {
     this.dropdown.hide();
   }
-
-  public onKeyDown(event: KeyboardEvent) {
-    if (['Enter', ' ', 'ArrowDown', 'Down', 'ArrowUp', 'Up'].indexOf(event.key) > -1) {
-      if (!this.dropdown.showing) {
-        this.showDropdown();
-        return;
-      }
-    
-      /*if (!this.options.length) {
-        event.preventDefault();
-        return;
-      }*/
-    }
-    
-    if (event.key === 'Enter' || event.key === ' ') {
-     /* this.selectedOption = this.keyManager.activeItem;
-      this.selectOption(this.selectedOption);*/
-    } else if (event.key === 'Escape' || event.key === 'Esc') {
-      this.dropdown.showing && this.hideDropdown();
-    } else if (['ArrowUp', 'Up', 'ArrowDown', 'Down', 'ArrowRight', 'Right', 'ArrowLeft', 'Left']
-      .indexOf(event.key) > -1) {
-      //this.keyManager.onKeydown(event);
-    } else if (event.key === 'PageUp' || event.key === 'PageDown' || event.key === 'Tab') {
-      this.dropdown.showing && event.preventDefault();
-    }
-   }
 
    onSetValuesAndDisplayText() {
     this.displayText = this.onSetDisplayText(this.minValueInput, this.maxValueInput);
@@ -151,5 +122,11 @@ export class CustomSelectMinMaxComponent implements OnInit, AfterViewInit, Contr
   
    public onChange() {
      this.onChangeFn(this.result);
+   }
+
+   public isInvalid(): boolean {
+     if (this.minValueInput && this.maxValueInput && +this.minValueInput > +this.maxValueInput)
+      return true;
+    return false;
    }
 }
