@@ -1,10 +1,10 @@
 <div class="container">
-  <app-custom-select-minmax
+  <app-custom-input-minmax
     label="Valor Op"
     placeholder="Valor Op"
     nameButton="Aplicar"
     [(ngModel)]="selectedDestination">
-  </app-custom-select-minmax>
+  </app-custom-input-minmax>
   <div (click)="showContent()">
     Valor min: {{ selectedDestination?.min }}
     Valor max: {{ selectedDestination?.max }}
@@ -13,10 +13,10 @@
   <div>
     <button (click)="limpar()">Limpar</button>
   </div>
-  <app-custom-select-minmax
+  <app-custom-input-minmax
   nameButton="Aplicar 2"
   [(ngModel)]="selectedDestination2">
-</app-custom-select-minmax>
+</app-custom-input-minmax>
 <div (click)="showContent()">
   Valor min: {{ selectedDestination2?.min }}
   Valor max: {{ selectedDestination2?.max }}

@@ -21,7 +21,7 @@ import { CustomTextareaComponent } from './custom-textarea/custom-textarea.compo
 import { CustomDropdownButtonComponent } from './custom-dropdown-button/custom-dropdown-button.component';
 import { CustomSelectButtonComponent } from './custom-dropdown-button/custom-select-button/custom-select-button.component';
 import { CustomDropdownMinMaxComponent } from './custom-dropdown-minmax/custom-dropdown-minmax.component';
-import { CustomSelectMinMaxComponent } from './custom-dropdown-minmax/custom-select-minmax/custom-select-minmax.component';
+import { CustomInputMinMaxComponent } from './custom-dropdown-minmax/custom-input-minmax/custom-input-minmax.component';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
@@ -38,7 +38,7 @@ import { MatButtonModule } from '@angular/material/button';
     CustomSelectButtonOptionComponent,
 
     CustomDropdownMinMaxComponent,
-    CustomSelectMinMaxComponent
+    CustomInputMinMaxComponent
   ],
   imports: [
     BrowserModule,

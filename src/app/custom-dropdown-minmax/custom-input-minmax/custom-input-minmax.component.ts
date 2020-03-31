@@ -1,22 +1,20 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, ContentChildren, QueryList, AfterViewInit, forwardRef, HostListener } from '@angular/core';
 import { CustomDropdownMinMaxComponent } from '../custom-dropdown-minmax.component';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { CustomDropdownMinMaxBusinessService } from '../custom-dropdown-minmax-business.service';
 
 @Component({
-  selector: 'app-custom-select-minmax',
-  templateUrl: './custom-select-minmax.component.html',
-  styleUrls: ['./custom-select-minmax.component.scss'],
+  selector: 'app-custom-input-minmax',
+  templateUrl: './custom-input-minmax.component.html',
+  styleUrls: ['./custom-input-minmax.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CustomSelectMinMaxComponent),
+      useExisting: forwardRef(() => CustomInputMinMaxComponent),
       multi: true
-    },
-    CustomDropdownMinMaxBusinessService
+    }
   ]
 })
-export class CustomSelectMinMaxComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+export class CustomInputMinMaxComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
   @Input()
   public label: string;
@@ -48,12 +46,10 @@ export class CustomSelectMinMaxComponent implements OnInit, AfterViewInit, Contr
   @ViewChild(CustomDropdownMinMaxComponent, { static: true })
   public dropdown: CustomDropdownMinMaxComponent;
   
-  constructor(private dropdownService: CustomDropdownMinMaxBusinessService) {
-    this.dropdownService.register(this);
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.dropdownService.register(this);
   }
 
   ngAfterViewInit(): void {

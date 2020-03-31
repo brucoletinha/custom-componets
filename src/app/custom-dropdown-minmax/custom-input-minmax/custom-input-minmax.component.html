@@ -1,8 +1,8 @@
-<div [class]="disabled ? 'custom-select-minmax-wrapper custom-select-minmax-wrapper-disabled' : 'custom-select-minmax-wrapper'" 
+<div [class]="disabled ? 'custom-input-minmax-wrapper custom-input-minmax-wrapper-disabled' : 'custom-input-minmax-wrapper'" 
       [class.required]="required"
       (click)="disabled ? false : showDropdown()"
       #dropreference>
-  <div class="custom-select-minmax-wrapper-padding-left"  ></div>
+  <div class="custom-input-minmax-wrapper-padding-left"  ></div>
   <div class="display-text">
     <input #input
       placeholder="{{placeholder}}"

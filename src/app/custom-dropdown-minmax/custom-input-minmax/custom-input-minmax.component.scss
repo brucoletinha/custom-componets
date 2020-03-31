@@ -1,6 +1,6 @@
 @import "src/app/shared/theme_variables.scss";
 
-.custom-select-minmax-wrapper {
+.custom-input-minmax-wrapper {
   position: relative;
   width: inherit;
   height: inherit;
@@ -22,7 +22,7 @@
     cursor: pointer;
     width: 100%;
   }
-  .custom-select-minmax-wrapper-padding-left {
+  .custom-input-minmax-wrapper-padding-left {
     height: inherit;
     border-radius: 8px 0px 0px 8px;
     width: 10px;
@@ -133,9 +133,9 @@
   }
 }
 
-.custom-select-minmax-wrapper-disabled  {
+.custom-input-minmax-wrapper-disabled  {
   border: 1px dashed $secondary-color-300 !important;
-  .custom-select-minmax-wrapper-padding-left {
+  .custom-input-minmax-wrapper-padding-left {
     cursor: default;
     background: none ;
   }
