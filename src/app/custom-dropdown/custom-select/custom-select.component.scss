@@ -89,7 +89,7 @@
     top: -8px;
     left: 10px;
     opacity:0;
-    background-color: $bs2-white;
+    background-color: $bss-white;
     padding: 0 2px;
     font-size: 12px;
     -webkit-transition: 0.2s ease-in-out;
@@ -107,13 +107,13 @@
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.24);
   display: block;
   overflow: auto;
-  background: $bs2-white;
+  background: $bss-white;
 
   &:hover {
     box-sizing: border-box;	
     border: 1px solid $secondary-color-300;	
     border-radius: $default-border-radius;	
-    background-color: $bs2-white;	
+    background-color: $bss-white;	
     //box-shadow: 0 0 0 3px #D6D6F5;
   }
 }

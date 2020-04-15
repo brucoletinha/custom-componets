@@ -34,7 +34,7 @@
         input[class*="has-error"], input[class*="has-error"]:hover, input[class*="has-error"]:focus  {
             border: 1px solid $red-color-invalid-border;
             border-radius: $default-border-radius;
-            background-color: $bs2-white;
+            background-color: $bss-white;
             box-shadow: 0 0 0 3px $red-color-invalid-shadow;
         }
 
@@ -53,7 +53,7 @@
             top: 8px;
             left: 10px;
             opacity:0;
-            background-color: $bs2-white;
+            background-color: $bss-white;
             padding: 0 2px;
             font-size: $font-size-12;
             -webkit-transition: 0.2s ease-in-out;
@@ -80,13 +80,13 @@
 
             &:focus + .custom-input-label {
                 color: $primary-color-400;
-                background-color: $bs2-white;
+                background-color: $bss-white;
             }
     
             &:focus {
                 border: 1px solid $primary-color-400;
                 border-radius: $default-border-radius;
-                background-color: $bs2-white;
+                background-color: $bss-white;
                 box-shadow: 0 0 0 3px $primary-color-200;
             }
             
@@ -109,7 +109,7 @@
             &:invalid {
                 border: 1px solid $red-color-invalid-border;
                 border-radius: $default-border-radius;
-                background-color: $bs2-white;
+                background-color: $bss-white;
                 box-shadow: 0 0 0 3px $red-color-invalid-shadow;
             }
 
